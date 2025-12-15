@@ -1,0 +1,1079 @@
+\documentclass[12pt]{extarticle}
+\usepackage[a4paper, top=27mm, left=20mm, right=20mm, bottom=22mm]{geometry}
+\usepackage[slovak]{babel}
+\usepackage{lipsum, calc, parskip}
+\usepackage{hyperref}
+\usepackage{fancyhdr, ulem}
+\usepackage{graphicx}
+\usepackage{setspace, enumitem, soul}
+
+\linespread{1.05}
+
+\setlist[description]{leftmargin=1cm,labelindent=1cm}
+
+% poznámka: pridať stewartov calculus medzi zdroje
+
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}}
+% \renewcommand\labelitemi{--}
+
+\newcommand{\uloha}{\uwave}
+
+\makeatletter
+\newcommand{\refsec}[1]{%
+    \refstepcounter{section}%
+    {%
+        \begingroup
+        \hypersetup{hidelinks}%
+        \@startsection{section}{1}{\z@}%
+            {-3.5ex \@plus -1ex \@minus -.2ex}%
+            {2.3ex \@plus.2ex}%
+            {\normalfont\Large\bfseries}%
+            *{\hyperlink{toc}{\thesection\quad #1}}%
+        \endgroup
+    }%
+    \addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}%
+}
+
+\newcommand{\refsubsec}[1]{%
+    \refstepcounter{subsection}%
+    {%
+        \begingroup
+        \hypersetup{hidelinks}
+        \@startsection{subsection}{2}{\z@}%
+            {-3.25ex \@plus -1ex \@minus -.2ex}%
+            {1.5ex \@plus .2ex}%
+            {\normalfont\large\bfseries}%
+            *{\hyperlink{toc}{\thesubsection\quad #1}}%
+        \endgroup
+    }%
+    \addcontentsline{toc}{subsection}{\protect\numberline{\thesubsection}#1}%
+}
+
+\newcommand{\refsubsubsec}[1]{%
+    \refstepcounter{subsubsection}%
+    {%
+        \begingroup
+        \hypersetup{hidelinks}%
+        \@startsection{subsubsection}{3}{\z@}%
+            {-3.25ex \@plus -1ex \@minus -.2ex}%
+            {1.5ex \@plus .2ex}%
+            {\normalfont\normalsize\bfseries}%
+            *{\hyperlink{toc}{\thesubsubsection\quad #1}}%
+        \endgroup
+    }%
+    \addcontentsline{toc}{subsubsection}{\protect\numberline{\thesubsubsection}#1}%
+}
+\makeatother
+
+
+
+\title{{\fontsize{30}{30}\selectfont\textbf{\textsc{Sprievodca Fyzikálnou olympiádou}}}}
+\date{}
+
+\author{Vladimír Slanina \and Tomáš Kubrický \and Samuel Šandor}
+
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Sprievodca Fyzikálnou olympiádou}
+\fancyhead[R]{\nouppercase{\rightmark}}
+\fancyfoot[C]{\thepage}
+
+\begin{document}
+
+
+% \begin{titlepage}
+
+\maketitle
+\thispagestyle{empty}
+
+\clearpage
+
+\section*{Úvod}
+
+Cieľom sprievodcu je podporiť komunitu riešiteľov Fyzikálnej olympiády a uľahčiť im proces prípravy na jej riešenie. Dokument obsahuje odporúčania k príprave, výber niekoľkých osvedčených študijných materiálov a zbierok úloh, z ktorých sa učili viacerí úspešní riešitelia súťaže.
+
+Tento sprievodca nemá za cieľ nahradiť oficiálne príručky ani poskytovať úplný prehľad všet\-kých dostupných zdrojov. Jeho zámerom je skôr prispieť k systematickejšiemu prístupu k štúdiu a riešeniu úloh, a takisto inšpirovať riešiteľov aj po neodbornej stránke (napr. skvelé príležitosti na zoznámenie sa so stredoškolákmi s rovnakým zmýšľaním; ako sa vyrovnať s neúspechom,~...).
+
+Uvedomujeme si, že na prvý pohľad to môže pôsobiť odstrašujúco (ide predsa o skoro 40-stranový dokument) a veľa ľudí to môže demotivovať alebo až odstrašiť. Treba si ale uvedomiť, že to nie sú veci, ktoré sa treba naučiť za jeden mesiac, ale že ide o niekoľkoročnú cestu. Fyzikálna olympiáda predsa vyžaduje znalosti ďaleko nad to, čo sa bežne naučí za 4 roky štúdia na strednej škole. Výhodou tohto materiálu je, že riešitelia majú prehľad o tom, ako sú na tom so svojimi aktuálnymi vedomosťami a čo sa ešte potrebujú doučiť, aby ich potom už žiadny typ úlohy neprekvapil. Veríme ale, že keď sa už niekto odhodlá, hoci aj veľmi pomaly, vybrať sa na túto cestu, nebude sklamaný. Naším cieľom je vám poskytnúť možnosti ako sa zlepšiť vo fyzike, pomôcť vám objaviť témy, ktoré vás zaujímajú a prípadne nejdú, a posunúť vás na vašej ceste fyzikou.
+ 
+Sme presvedčení, že každý si v tomto sprievodcovi nájde niečo, čo ho posunie ďalej. Prajeme veľa radosti a úspechov na vašej ceste učenia sa fyziky :)
+
+\clearpage
+
+\section*{Predslov}
+
+Milí čitatelia,
+
+dostáva sa vám do rúk výsledok našej niekoľkomesačnej práce -- \textsl{Sprievodca Fyzikálnou olympi\-ádou}. Myšlienka vytvoriť ho sa zrodila z vlastnej skúsenosti s tým, aké zložité môže byť nájsť správny smer pri príprave na súťaž.
+
+S príchodom na strednú školu som bol jeden z tých študentov, ktorí chodili na každú možnú súťaž, či už matematickú, informatickú alebo fyzikálnu. Okrem toho som ešte riešil korešponden\-čné semináre FYKOS, FKS, KSP a KMS. Venoval som sa tak nejak všetkému, no v skutočnosti poriadne a do hĺbky ničomu.
+
+Koncom druhého ročníka som sa začal viac venovať Fyzikálnej olympiáde. Rýchlo som ale natrafil na problém, že vlastne ani neviem, ako sa systematicky učiť po vlastnej línii. Učiteľka fyziky na strednej škole, Eva Paňková, mi odporučila pozrieť si stránky českej fyzikálnej olympiády. Ďalšiu radu som dostal od Ľubomíra Muchu na Klube fyzikov v Košiciach, ktorý mi poradil, že sa oplatí riešiť staré príklady z fyzikálnej olympiády. Vďaka tomu sa mi v roku 2024 ako tretiakovi podarilo dostať sa na EuPhO, IPhO a IOAA. Na EuPhe som potom rýchlo zistil, že to, že som sa na tieto súťaže dostal, ešte vôbec neznamená, že fyziku viem na takej úrovni. 
+
+Nakoľko som chcel ísť na medzinárodné súťaže aj ďalší rok, a tentokrát na nich získať aj nejaký úspech, tak som sa potreboval učiť komplexnejšie veci a bežné materiály už neboli postačujúce. Dlho som tápal, a hoci sa mi na IPhO a IOAA podarilo dostať aj ďalší rok, tak proces učenia sa nebol vôbec jednoduchý, naopak veľmi chaotický.
+
+Táto cesta síce nakoniec bola úspešná, avšak dlho mi trvalo zorientovať sa v tom, ako sa mám na súťaže pripravovať, a ako potom na nich efektívne pracovať. Ako som sa na súťažiach a sústredeniach ku koncu strednej školy rozprával s mladšími riešiteľmi, tak som si všimol, že často robia úplne tie isté chyby, ako som robil ja. To ma inšpirovalo začať písať tohto sprievodcu. Spočiatku som si myslel, že pôjde o krátky dokument, v ktorom spíšem sylabus a nejaké základné tipy, avšak rýchlo sa ukázalo, že je toho v skutočnosti o dosť viac, čo sa dá k tejto téme povedať. Poprosil som preto o pomoc dvoch dobrých kamarátov, Tomáša a Sama, ktorí si pri riešení fyzikálnej olympiády prešli veľmi podobným procesom ako ja. Našťastie mi boli ochotní pomôcť, za čo som im veľmi vďačný, lebo bez nich by tento dokument pravdepodobne vôbec nevznikol.
+
+V mene všetkých autorov by som sa chcel z celého srdca poďakovať všetkým úžasným a ochotným ľuďom, ktorí prispeli k vzniku tohto \textsl{Sprievodcu}. Menovite patrí by som sa chcel poďakovať Júlii Mnichovej a Zuzane Slaninovej za ochotnú pomoc s jazykovou korektúrou. Obrovské ďakujem patrí Lukášovi Jackovi za vylepšenie typografickej stránky \textsl{Sprievodcu} a za jeho všetky veľmi trefné rady a konštruktívnu kritiku. Ľubomírovi Muchovi by som sa chcel poďakovať za cenné postrehy k obsahovej stránke \textsl{Sprievodcu}.
+
+Prajem príjemné čítanie
+
+\vspace{1em}
+\hfill Vlado \hspace{1cm}
+
+\clearpage
+
+\section*{O autoroch}
+
+\subsubsection*{Vladimír Slanina (vladimir.slanina.jr@gmail.com)} 
+
+Dvakrát postúpil na IPhO, kde raz získal bronzovú medailu, zúčastnil sa aj EuPhO, a dvakrát tiež astronomickej olympiády IOAA, kde získal čestné uznanie. Olympiády vždy považoval za skvelú príležitosť na spoznávanie nových ľudí a miest. Aktívne sa venuje organizovaniu korešpondenčných seminárov ako dobrovoľník v organizáciách P-MAT, FYKOS a takisto je organizátor Astronomickej olympiády. Vo voľnom čase sa venuje behu a hraniu na gitare. Aktuálne študuje informatiku na Matematicko-fyzikálnej fakulte na Univerzite Karlovej v Prahe. 
+
+\subsubsection*{Tomáš Kubrický (kubrickytomas1@gmail.com)}
+
+Dlhoročný olympionik úspešný vo viacerých oblastiach, trikrát postúpil na IPhO, kde získal čestné uznanie a bronzovú medailu, a dvakrát na EuPhO, kde získal tiež čestné uznanie a bronzovú medailu. Úspešný bol aj v Astronomickej olympiáde, kde v medzinárodných kolách IOAA získal bronzovú a zlatú medailu. Okrem toho úspešne riešil na celoštátnej úrovni Matematickú olympiádu, Olympiádu v informatike či Geografickú olympiádu. Aktuálne študuje informatiku na Matematicko-fyzikálnej fakulte na Univerzite Karlovej v Prahe a je organizátor Astronomickej olympiády.
+
+
+\subsubsection*{Samuel Šandor (samuelsandor73@gmail.com)}
+
+Víťaz krajských kôl FO v kategóriách D a C, so svojimi tímami sa dostal na popredné priečky vo Fyzikálnych nábojoch a Fyziklání. Úspešne sa venoval aj súťažiam ako TMF, SOČ či AMAVET, okrem toho je jeho vášňou aj Matematická olympiáda a Geografická olympiáda, v ktorej sa zúčastnil aj medzinárodného kola v Thajsku. Jeho dlhoročné skúsenosti so šachovým tréningom mu pomáhajú nachádzať paralely aj v tréningu na olympiády. Aktuálne je v maturitnom ročníku na Gymnáziu, Poštová 9, Košice.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\linewidth]{fotka_autorov.jpg}
+    \caption{Fotka autorov -- zľava doprava Samo, Vlado, Tomáš}
+\end{figure}
+
+
+% \end{titlepage}
+
+\hypertarget{toc}{}
+\tableofcontents
+
+\clearpage
+
+\renewcommand{\section}{\refsec}
+\renewcommand{\subsection}{\refsubsec}
+\renewcommand{\subsubsection}{\refsubsubsec}
+
+
+\section{Všeobecné odporúčania}\markright{Všeobecné odporúčania}
+
+\subsection{Ako používať tohto sprievodcu?}
+
+Na začiatok by sme chceli upozorniť, že táto príručka vám nezaručí úspech, len vás navedie na nami overenú cestu k nemu. Naše odporúčania vychádzajú z niekoľkoročných skúseností s riešením Fyzikálnej olympiády v rokoch 2020-2025, ktorá sa rovnako ako všetko neustále mení. Odporúčania, o ktorých tu píšeme, boli najviac aktuálne v čase písania tohto materiálu. Je jasné, že niektoré veci o pár rokov už nebudú aktuálne (napr. aktuálni organizátori a autori úloh FO sú už starší páni, čiže v blízkej budúcnosti môže dôjsť ku veľkým zmenám). Najdôležitejšie je si odniesť z tohto sprievodcu všeobecné odporúčania, inšpirovať sa a poučiť sa z našich skúseností. Zaradenie tém a štýl úloh FO sa takisto nemusí zmeniť len kvôli iným organizátorom. Niektoré ročníky môžu byť výnimočné napríklad tým, že niektoré témy sú zaradené skôr alebo je na ne väčší dôraz, preto ak sa niečo nachádza v domácom kole, tak organizátori očakávajú, že sa na danú tému pozriete viac.
+
+Tento sprievodca je rozdelený do niekoľkých náročnostných úrovní (bronzová, strieborná, zlatá, platinová a diamantová), pričom je veľmi odporúčané mať poriadne preštudovanú predchádza\-júcu úroveň pred pokračovaním na ďalšiu. 
+
+\begin{description}
+    \item[Bronz] -- zamerané na FO kat. D. Ide o prvý kontakt s fyzikou na strednej škole, na ktorej si súťažiaci má osvojiť prípravu a učenie sa na olympiádu.
+    \item[Striebro] -- zamerané na FO kat. C. Tu sa riešiteľ po prvý krát stretáva s oblasťami rôznymi od mechaniky, napríklad s termodynamikou a jednoduchými elektrickými obvodmi.
+    \item[Zlato] -- zamerané na FO kat. B a krajské kolo kat. A. Riešiteľ sa učí náročnejšie fyzikálne témy a je potrebná znalosť matematickej analýzy.
+    \item[Platina] -- zamerané hlavne na prípravu na celoštátne kolo a výberové sústredenie. 
+    \item[Diamant] -- zamerané na efektívnejšiu prípravu na medzinárodné súťaže.
+\end{description}
+
+Ku každej kategórii je napísaný aj sylabus, ktorý slúži na orientačný prehľad tém, ktoré by sa mohli vyskytnúť na súťaži. Takto spísané témy nemajú slúžiť na povrchné učenie sa jednotlivých vecí. Cieľom je, že keď si už danú tému systematicky pomocou nejakého súvislého materiálu preštudujete, tak sa môžete pozrieť, či ste si prešli všetko, čo potrebujete vedieť. Takisto v tomto sylabe odporúčame aj niekoľko zdrojov, ktoré využívali autori sprievodcu na prípravu. Úlohy, ktoré sú typickým príkladom v danej téme a vážne sa ich oplatí preriešiť, sme označili \uloha{podčiarkutie vlnovkou}. Bohužiaľ, k väčšine tém zdroje chýbajú, pretože sme sa dané témy naučili poväčšine na sústredeniach alebo na Klube fyzikov organizovanom Ľubomírom Muchom v Košiciach. Existuje mnoho kvalitných zdrojov, ktoré môžete použiť na prípravu, avšak v tomto sprievodcovi odporúčame iba tie, s ktorými máme osobnú skúsenosť\footnote{Pre konkrétne rady pozri kapitolu Materiály na prípravu \ref{vseob-materialy}.}.
+
+\subsection{Ako riešiť úlohy?}
+Fyzika nie je o učení sa rovníc naspamäť, ale o chápaní toho, ako sa správa svet okolo nás. Je pravda, že síce toto správanie vyjadrujeme práve cez algebraické rovnice, ale kľúčové je mať jasnú predstavu o tom, čo nimi chceme vyjadriť. Predtým, než sa vrhnete do riešenia nejakej úlohy, je preto dôležité správne pochopiť situáciu, ktorú ideme riešiť. Znie to síce abstraktne, avšak v praxi to vyzerá nasledovne:
+
+
+\begin{enumerate}
+
+    \item Poriadne si prečítajte zadanie. A potom ešte raz. Dôležité je, aby ste správne pochopili situáciu, ktorá je pred vami. Ak nechápete priamo zadanie, tak sa skúste zamyslieť nad tým, ako asi autor mohol zamýšľať danú úlohu a čo asi od vás môže očakávať (skúste napríklad zohľadniť kolo súťaže, na ktorom sa nachádzate, a podľa toho odhadnúť náročnosť).
+
+    \item Nakreslite si obrázky všade, kde sa dá. Hovorí sa, \uv{lepšie raz vidieť ako stokrát počuť}. To isté platí aj pri riešení úloh. Aj napriek tomu, že ste presvedčení, že ste v hlave rozložili sily správne, tak si to pre istotu nakreslite. Na papieri pred sebou ľahšie spozorujete, že ste na nejaký prvok úlohy zabudli, ako keď sa neustále vraciate k tej istej predstave v hlave.
+
+    \item Zamyslite sa, ktoré zákony a triky by sa mohli dať použiť. 
+    
+        \begin{enumerate}
+
+            \item Je dobré naučiť sa prejsť si rýchlo v hlave všetky zákony a triky, ktoré by sa mohli dať použiť. Nad týmto zamýšľaním sa oplatí stráviť nejakú chvíľu, pretože vám to vo výsledku zaberie o dosť menej času ako zúfalé upravovanie komplikovaných rovníc, na konci ktorého pravdepodobne aj tak dostanete zlý výsledok.
+            
+                \begin{itemize}
+                    \item[---] Napríklad pri riešení elektrických obvodov si skúste nájsť vertikálnu alebo horizontálnu os symetrie, alebo pri kinematických úlohách vzťažnú sústavu, ktorá by vám zjednodušila počítanie.
+                \end{itemize}
+
+            \item Pokúste sa previesť neznámu úlohu, ktorú máte pred sebou, na bežnú úlohu, ktorú ste už miliónkrát predtým spočítali. Veľa zdanlivo nesúvisiacich úloh funguje na rovnakom alebo veľmi podobnom princípe. Napríklad pružina je mechanický kondenzátor, tepelná izolácia sa správa ako rezistor, využitie Fermatovho princípu pri optimalizačných úlohách z mechaniky\footnote{Tento krok sa dá použiť až keď máte prepočítané obrovské množstvo príkladov z rôznych oblastí fyziky}. 
+        
+            \item Je dobré pozrieť sa na konštanty a hodnoty veličín, ktoré vám zadali (kým teda nedostanete zoznam konštánt -- tzv. konštantovník, vtedy sa tento tip úplne použiť nedá). V drvivej väčšine prípadov použijete všetky konštanty a hodnoty veličín, ktoré dostanete, preto je vhodné sa zamyslieť nad tým, ako by ste ich mohli zakomponovať do svojho riešenia. Pozor, nižšie sa dočítate, že sa nemusíte obmedzovať len na tieto veličiny.
+
+        \end{enumerate}
+
+    \item Napíšte si vyjadrenie zákonov, ktoré môžete použiť. Vyjadrite z nich veličiny, ktoré potrebujete.
+
+        \begin{enumerate}
+            
+            \item Pred náročnejším upravovaním (tzv. \uv{trieskaním}) rovníc si skontrolujte, či máte dostatočný počet rovníc (štandardne rovnaký počet rovníc ako neznámych). Môže sa stať, že nie, no netreba sa v takomto prípade zľaknúť. Je možné, že sa vám počas rátania nejakým spôsobom vykrátia neznáme veličiny alebo daný člen počas počítania zanedbáte. Je preto úplne v poriadku počítať aj s veličinami, ktoré nepoznáte.
+
+            \begin{itemize}
+                \item Oplatí sa takisto pozerať sa nielen na osobitné členy, ale aj na ich kombinácie, napr. \(GM\), \(\frac {v_1} {v_2}\), \(m_1 +m_2\), a tie považovať za jednu neznámu.
+            \end{itemize}
+        
+            \item Je veľmi odporúčané riešiť všetko \uv{najprv všeobecne, a potom pre konkrétne hodnoty}, ako píšu často v zadaniach fyzikálnej olympiády. Viete tak podstatne ľahšie nájsť chyby a vyčísľovanie pre jednotlivé konkrétne hodnoty potom zaberá o dosť menej času. Keď naberiete skúsenosti s počítaním príkladov, budete počas svojho riešenia často vidieť vzťahy, ktoré ste už pravdepodobne niekde videli. Na základe toho viete často určiť, či to, čo robíte, je skutočne správne (viď. fyzikálna intuícia nižšie).
+        
+        
+        \end{enumerate}
+
+    \item Zamyslite sa nad výsledkom. Správa sa podľa očakávaní\footnote{Súbor metód, ktoré na to slúžia, sa nazýva \textit{fyzikálna intuícia}. Často sa táto téma prednáša na sústredeniach, nakoľko ide o neuveriteľne silný nástroj pri riešení príkladov. O jednotlivých metódach si viete prečítať napríklad v \href{https://davinci.fmph.uniba.sk/~tekel1/docs/zleriesenia.pdf}{poznámkach z prednášky Juraja Tekela}. Takisto odporúčame preriešiť si príklady \href{https://fks.sk/ulohy/zadania/2759/}{\textit{Veta o nekonečnej opici}} a \href{https://fks.sk/ulohy/zadania/2339/}{\textit{Chutný vzduch}}}? Sú v ňom všetky hodnoty zo zadania? Ak nie, dáva zmysel, že výsledok nie je závislých od týchto parametrov? 
+    
+\end{enumerate}
+
+Na záver by sme chceli ešte raz zdôrazniť, že vnímanie fyziky čisto cez rovnice vedie k memorovaniu veľkého množstva rovníc a riešeniu príkladov bez toho, aby za nimi bola nejaká logika. Takýto riešiteľ nedokáže potom zodpovedať ani tie najzákladnejšie konceptuálne otázky alebo robí úplne absurdné chyby typu pomýlenie si času $t$ s teplotou $t$, keďže predsa ide o rovnaké písmená. 
+
+\subsection{Ako trénovať na olympiádu}
+
+Predmetové olympiády ako FO sú skôr športom ako vedou -- neriešime v nich žiadne otvorené problémy (trochu iné sú súťaže ako napr. TMF či SOČ), skôr súťažíme proti ostatným v úzko definovaných schopnostiach (tým myslíme riešenie úloh v uzavretej miestnosti počas štyroch alebo piatich hodín). Preto sa aj v spôsobe prípravy môžeme niečo od športovcov naučiť. Veľmi často vidno amatérskych športovcov (aj olympionikov) robiť podobnú chybu -- s blížiacou sa súťažou sa snažia zvyšovať intenzitu prípravy v podstate priamoúmerne\footnote{Napríklad \href{https://pubmed.ncbi.nlm.nih.gov/34651125/}{táto štúdia} zistila podobnú chybu u 64\% amatérskych bežcov, pripravujúcich sa na maratón. Ich výkon by sa bol zlepšil, ak by znížili intenzitu tréningov pár týždňov pred súťažou.}. Poslednú noc pred olympiádou títo súťažiaci (a tejto chyby sme boli svedkami aj na medzinárodných súťažiach!) vystresovane rátajú príklady, pozerajú si ďalšie a ďalšie úlohy, lebo \uv{čo ak by sa práve tento vzorec vyskytol}, pritom však zisťujú, koľko veľa toho ešte nevedia a zaspávajú neskoro s hlavou plnou neistoty a starostí.
+
+Ako to teda robiť lepšie? Profesionálni športovci vo svojich tréningových plánoch od istého bodu pred súťažou znižujú tréningovú záťaž. Gro prípravy sa deje počas hluchých období, mimo súťažnej sezóny. Krátko pred podávaním výkonu sa už len dolaďujú detaily, dbá sa na to, aby ste \uv{nevyšli z cviku}. Samozrejme, v rozličných športoch sa konkrétne detaily líšia, avšak hlavná myšlienka -- bezprostredne pred súťažou sa snažíme nepresiliť sa -- je platná takmer pri všetkých.
+
+Rovnaký prístup odporúčame aj pri príprave na olympiádu. Ideálne je gro prípravy realizovať pár mesiacov pred samotnou súťažou (to je napríklad učenie sa, ako funguje nejaký pre vás nový typ úlohy, aké triky sa tam využívajú, atď.). Postupne pár týždňov pred súťažou si prepočítavame minulé ročníky a sledujeme oblasti, v ktorých si ešte nie sme istý a zisťujeme, či ich ešte vieme trocha doladiť. Posledný týždeň iba prepočítavame jednotlivé úlohy a posledný deň sa snažíme nepočítať nič. Najväčšou prioritou deň (pár dní) pred súťažou by malo byť 7-8 hodín kvalitného spánku, ktoré by sme určite nikdy nemali obetovať fyzikálnej príprave.
+
+Jedna vec je mať dobre naštudovanú teóriu, druhá vec je vedieť ju používať. Veľmi pomáha mať prepočítané obrovské množstvo príkladov (stredoškolské učebnicové príklady sa nepočítajú, keďže majú výrazne nižšiu úroveň ako FO). Skvelým spôsobom, ako byť počas školského roka motivovaný priebežne riešiť fyzikálne úlohy a držať sa tým vo forme pred prichádzajúcim kolom olympiády, sú korešpondenčné semináre \ref{komunita}.
+
+\subsection{Príprava na súťažný deň}
+
+Súťažné podmienky sú výrazne iné od tých domácich, v ktorých sa pripravujete. Doma máte svoje pohodlie, môžete sa kedykoľvek ísť sa poprechádzať a oddýchnuť si. Na súťaži pod časovým tlakom takéto privilégiá nemáte. Je preto dôležité špeciálne venovať pozornosť tomu, čo vám najviac pomáha na súťaži.
+
+\begin{itemize}
+
+    \item Mnohým ľuďom pomáha pri riešení Coca Cola. Treba ale piť s mierou. Obsahuje to veľa cukru a kofeínu, teda máte nejaký nárast vo výkone, avšak po nejakej chvíli prichádza nanešťastie aj útlm (pokles vo výkone). Takisto sa po tom chodí často na záchod (čo nemusí byť nutne zlé, trošku sa prejdete a naberiete nové myšlienky, ale ak to je príliš časté, tak sa nebudete vedieť sústrediť). 
+
+    \item Je zaujímavé, že aj jedlo má vplyv na váš výkon. Je odporúčané nejesť ťažké jedlá pred testami. Z našej skúsenosti odporúčame počas riešenia hlavne cukry -- ovocie, hroznový cukor, horké čokolády, malé keksíky.
+
+    \item Kalkulačka je váš najlepší kamarát, preto ju poznajte naozaj dobre. Jednoznačne si prečítajte ku nej návod a zistite, čo všetko vie a ako sa to na nej robí (napr. riešenie sústavy rovníc, premena stupňov na radiány a pod.) 
+    
+    \underline{Odporúčaná kalkulačka} – \href{https://upload.wikimedia.org/wikipedia/commons/e/e6/Fx-991EX.jpg}{Casio fx-991CE X} \href{https://www.navod-k-obsluze.cz/upload/kalkulacka-casio-classwiz-fx-991-ce-x-cerna-31154-cesky-navod.pdf}{(online návod)} alebo podobná; výhody -- má konštanty, periodickú tabuľku prvkov, dokáže riešiť rovnice numericky, vie robiť lineárnu regresiu... Lineárna regresia je povinná výbava kalkulačky, minimálne na celoštátne kolo a na riešenie Astronomickej Olympiády.
+
+    Pozor, stále ale platí, že by ste ju mali používať až keď už máte odvodené všeobecné vzťahy, pretože tie sú na FO ďaleko dôležitejšie.
+
+\end{itemize}
+
+\subsection{Komunita}\label{komunita}
+
+Okrem riešenia fyzikálnej olympiády je dobré sa aj stretávať s ľuďmi, ktorí sa takisto zaujímajú o fyziku a podobné predmety (matematika, chémia, informatika). Najlepšie sú na to rôzne súťaže a sústredenia korešpondenčných seminárov. Naše odporúčania, do akých sa zapojiť, sú:
+
+\begin{itemize}
+    \item \underline{Trojsten} -- (semináre \href{https://fks.sk/}{FKS}, \href{https://fx.fks.sk/}{FX}, \href{https://kms.sk/}{KMS}, \href{https://www.ksp.sk/}{KSP}) -- slovenské korešpondenčné semináre, v ktorých vstúpite do komunity vám podobných ľudí. Na sústredeniach, na ktoré sa pozýva na základe korešpondenčnej časti, sú prednášky, ktoré vám prehĺbia vaše myslenie v danom obore. Semináre z iných predmetov vám zase rozšíria celkový rozhľad. Okrem prednášok je tam aj voľný program (vypĺňa väčšinu času stráveného na sústredení), na ktorom zažijete neskutočne veľa zábavy.
+    
+    Riešenie FKS vám takisto dá skúsenosti s písaním popisov ku vašim riešeniam, pričom na rozdiel od fyzikálnej olympiády dostávate aj nejakú spätnú väzbu (zdôvodnenie hodnotenia a vysvetlenia chýb, ktoré ste spravili) v slovnej podobe na rozdiel od počtu bodov za úlohu. Treba dodať, že na prednáškach na FKS sa primárne neučí súťažná fyzika, ktorú by ste využili na FO alebo iných súťažiach, skôr to prehĺbi vaše fyzikálne myslenie.
+
+    \item \underline{\href{https://fykos.cz/}{FYKOS}} -- rovnako ako FKS ide o korešpondenčný seminár, z ktorého dostávate spätnú väzbu (na rozdiel od FKS vám to vytlačia a pošlú v papierovej podobe, čo minimálne nás vždy potešilo). Vo FYKOSe sú takisto experimentálne úlohy, na ktorých sa naučíte, ako správne spracovať svoje merania a ako takúto úlohu spísať. Získate na nich veľa zručností s experimentmi, ktoré vám výrazne pomôžu na CK FO A a medzinárodných súťažiach. Na sústredeniach sú okrem fyzikálnych aj matematické prednášky, na ktorých sa naučíte potrebný kalkulus. Takisto tam je aj experimentálny deň, na ktorom sa naučíte spracovať experimenty na vysokej úrovni, po ktorom sa potom nemusíte báť žiadneho štatistického spracovania experimentov.
+
+    \item \underline{\href{https://physics.naboj.org/sk/sk/}{Fyzikálny náboj}, \href{https://online.fyziklani.cz/}{Fyziklání Online}, \href{https://fyziklani.cz/}{Fyziklání}} -- tímové súťaže tzv. nábojového typu (viac na stránke Fyzikálneho náboja). Naučia vás rýchlo a presne počítať príklady pod časovým nátlakom. Fyziklání (Online) má síce ťažšie, ale o to fyzikálne krajšie príklady.
+
+    \item \underline {\href{https://www.astronomickaolympiada.sk/}{Astronomická olympiáda}} -- riešenie Astronomickej olympiády (AO) na zlepšenie sa vo fyzike odporúčame až v diamantovej úrovni \ref{diamant-ao}, ale ak vás okrem fyziky aspoň trošku baví astronómia, tak ju odporúčame vyskúšať riešiť. Organizátori sú mladí a zanietení, čo je takisto cítiť na prepracovanosti a úrovni celej organizácie, ale najmä na skvelej komunite astronómov. 
+\end{itemize}
+
+Veľmi odporúčame zapájať sa do korešpondenčných seminárov, dá vám to vážne veľa. Na to, aby ste pozvaní na sústredenie, nie je spravidla potrebné odovzdať všetky úlohy, ale čím viac, tým lepšie. Riešenie korešpondenčných seminárov nie je zárukou a ani povinnosťou pre úspech, avšak prinajmenšom si nájdete kopec kamarátov a rozšírite si rozhľad vo fyzike a príbuzných oboroch.
+
+
+\subsection{Je potrebné byť dobrý v matematickej olympiáde?}
+Veľa riešiteľov pred riešením fyzikálnej olympiády začalo najprv riešiť matematickú olympiádu (MO). Dalo by sa očakávať, že keď ste dobrí v matematike, tak bude dobrí aj vo fyzike. Veď predsa fyzika je iba o rovniciach, a to je len matematika, však? V skutočnosti to tak vôbec nie je. Je výrazný rozdiel medzi matematikou na MO a \uv{počtami} na FO. Učitelia často hovoria \uv{Tu končí fyzika a začína matematika}, keď napíšu niekoľko vzťahov a je potrebné ich upraviť, čo je presne to, čo myslíme pod \uv{počtami}. S komplikovanými výrazmi (zložené zlomky, sústavy rovníc či komplexné čísla) sa v matematickej olympiáde stretnete zriedkakedy, zatiaľ čo vo fyzike k tomu vedie pomaly každá jedna úloha. 
+
+Prienik znalostí, ktoré z MO využijete, je tiež malý. Ani raz sme sa sa nestretli s tým, že by sme v FO potrebovali znalosti z teórie čísel alebo kombinatoriky. Vo fyzike potrebujete hlavne základnú geometriu, ktorú vás prevažne naučia v škole a nepotrebujete robiť myšlienkovo veľmi náročné úvahy a dokazovania.
+
+Fyzikálna olympiáda sa od Matematickej olympiády líši takisto spôsobom, akým je potrebné riešiť úlohy. Na MO dosť často výsledok poznáte, a snažíte sa ho dokázať. Na FO vám naopak výsledok vopred nepovedia, ale predstavia vám fyzikálny model situácie, ktorý musíte pochopiť, a až potom v ňom musíte vypočítať požadované veci. Zadania FO sú takisto výrazne dlhšie a vyžaduje sa väčšia precíznejšia práca s nimi (je potrebné vhodne vyselektovať, ktoré informácie sú priamo potrebné k riešeniu úlohy).  
+
+Pokiaľ ste ale dobrí v MO, určite vám to v riešení FO nebude na škodu. Schopnosť riešiť neznáme problémy, ktorú v MO získate, sa vám zíde aj pri FO. Koniec-koncov aj všetci traja autori tohto textu sa v nejakom bode strednej školy intenzívnejšie venovali práve Matematickej olympiáde.
+
+% Koment
+
+\subsection{Materiály na prípravu}\label{vseob-materialy}
+
+Na internete sa v súčasnosti nachádza veľké množstvo kvalitných zdrojov, z ktorých sa viete učiť online a nepotrebujete hľadať knižky v knižniciach. Na každý dobrý zdroj avšak pripadá niekoľko zlých zdrojov, kvôli ktorým môžete stratiť obrovské množstvo času tým, že nechápete základné súvislosti alebo si potrebujete dohľadať veľa nevysvetlených pojmov.
+
+Čo štandardne spravíte, keď sa stretnete s nejakým novým neznámym pojmom? Hodíte ho do Googlu, otvoríte zopár prvých linkov a snažíte sa tam nájsť odpoveď. Pri fyzike však takýto prístup vo väčšine prípadov spôsobí, že na každej z týchto stránok nájdete niekoľko ďalších pojmov, kvôli ktorým nedokážete pochopiť význam pôvodne hľadaného pojmu -- dostanete sa tak do zakliateho kruhu neefektívneho a chaotického učenia sa (ak sa teda z tých \uv{náhodných} útržkov informácií vôbec vynájdete a niečo pochopíte). Riešenie je jednoduché: nájdite si zdroj, v ktorom je daná problematika vysvetlená koherentne, a učte sa postupne a systematicky, nie len určité útržky celku bez chápania celého kontextu.
+
+Wikipédia sa môže javiť ako dobrý zdroj informácií, ale ten podporuje tento začarovaný cyklus -- keď pri nejakom odvodení niečomu nerozumiete, tak vám je veľmi sugestívne ponúknutý link na časť, ktorá vám nie je jasná a môžete si ju tak doštudovať. Opäť ale vo väčšine prípadov dochádza k tomu, že len lepíte kúsky skladačky dokopy a očakávate, že dostanete kompletný obraz.
+
+Dobrý materiál na učenie fyziky obsahuje nielen odvodenia a teoretické vysvetlenia, ale aj využitie na konkrétnych príkladoch. Na nich si viete overiť, či tomu skutočne rozumiete, a takisto zistiť, ako sa zvykne daná rovnica/trik využívať. Silno odporúčame prepočítať si niekoľko príkladov po naučení sa nejakej novej látky a overiť si, že ju budete vedieť použiť niekedy v budúcnosti.
+
+
+\hfill
+
+Konkrétne materiály odporúčané pre jednotlivé kategórie nájdete v sekciách venovaným jednotlivým úrovniam. Medzi všeobecne odporúčané materiály patrí:
+
+
+\begin{itemize}
+    \item \href{https://drive.google.com/drive/u/2/folders/1UyP5pYwwLiy_TQfih_pnccQtV-jDe8j1}{\textbf{Zbierka úloh}} z predchádzajúcich ročníkov FO, ľudovo nazývaná \textbf{\uv{šamaniny}}, je skvelé miesto, kde môžete trénovať naučenú teóriu. Takisto si privyknete pri týchto príkladoch na štýl, akým sú písané úlohy na FO, vďaka čomu budete lepšie chápať zadania úloh.  
+
+    \item študijné texty \href{http://fyzikalniolympiada.cz/studijni-texty}{Českej fyzikálnej olympiády} -- niektoré témy sú tu veľmi kvalitne spracované a odporúčame ich priamo v sylabe.
+    
+    \item Fyzika 1 a 2 od Hallidaya (angl. \textit{Fundamentals of Physics Extended} -- fyzické knižky sú síce drahé, ale viete ich nájsť aj online \href{https://dl.icdst.org/pdfs/files4/39e1817b05cf155433309dbb2f3289fe.pdf}{PDF} v angličtine alebo sa skúste spýtať v škole.
+    
+    \item \href{https://www.feynmanlectures.caltech.edu/}{Feynmanove prednášky} -- pokročilejšia, vysokoškolská učebnica, ponúka však veľmi dobré a intuitívne vysvetlenia niektorých relevantných tém (odporúčame geometrickú optiku, RLC obvody či termodynamiku) od jedného z najlepších fyzikov histórie. Dá sa zohnať aj ako séria kníh v slovenskom vydaní.
+    
+    \item V Košiciach sa pravidelne (každý druhý týždeň) konajú stretnutia \textit{Klubu fyzikov} organizovaného Ľubomírom Muchom. Každé stretnutie je zamerané na nejakú konkrétnu olympiádovú tému (napríklad kinematiku, dynamiku, termodynamiku, ...). Spravidla sa najprv daná téma vysvetlí, a potom sa z nej počítajú príklady. Tento klub potom pokračuje aj ako príprava na celoštátne kolo.
+
+    \item Ivo Čáp a Ľubomír Konrád publikovali dokument \href{https://nivam.sk/wp-content/uploads/2025/10/Uvod-do-FO.pdf}{Úvod do FO}. Tento dokument úplne nemôžeme odporučiť ako učebný materiál pre nových alebo mierne pokročilých riešiteľov Fyzikálnej olympiády, nakoľko je napísaný na príliš vysokej úrovni, ktorú ani nepotrebujete na riešenie slovenskej FO. Pri príprave na medzinárodné súťaže sa oplatí si tento dokument prejsť a uistiť sa, že skutočne poznáte všetku potrebnú matematiku. 
+
+\end{itemize}
+
+
+\subsection{Používanie nástrojov AI}\label{vseob-ai}
+V tomto sprievodcovi sa určite nevyhneme tejto veľmi aktuálnej otázke, či má zmysel si pri tréningu riešenia úloh na FO pomáhať s nástrojmi AI\footnote{Elegantne pri tom obídeme hlbšiu otázku, či má vôbec zmysel FO riešiť (a organizovať), v dobe dostupných AI nástrojov, a teda súťažiť v niečom, čo lepšie od nás zvládajú stroje. Odporúčame sa však aj nad týmto vnútorne zamyslieť, pomôže vám to s motiváciou.}. Revolúciu, ktorú v roku 2022 priniesol príchod veľkých jazykových modelov (LLM), si len ťažko mohol niekto v histórii fyzikálnej olympiády predstaviť. Stroje zrazu dokázali plniť aj duševné úlohy (kým doteraz ľudí prevyšovali len vo fyzických schopnostiach) na úrovni porovnateľnej s ľuďmi. 
+
+Nové voľne dostupné modely so zabudovaným Chain-of-Thought (to sú tie, ktoré porozmýšľajú predtým, ako napíšu odpoveď) dosahujú pri riešení (nielen) fyzikálno-olympiádnych úloh úžasné výsledky\footnote{\href{https://journals.aps.org/prper/abstract/10.1103/6fmx-bsnl\#s1}{Nemecká fyzikálna olympiáda -- prekonanie úrovne priemerného ľudského účastníka}}\footnote{\href{https://arxiv.org/abs/2510.05016/}{IOAA - prekonanie všetkých ľudských súťažiacich }}\footnote{\href{https://drive.google.com/file/d/1TSSVUprmpjaxcBddgH4iANtjgWP2b7I6/view?usp=drive_link}{Slovenská FO  - výkon na úrovni úspešného riešiteľa naprieč všetkými kategóriami}}. Tieto modely samozrejme vytvárajú nové možnosti ako podvádzať na FO\footnote{Prípad s ukrytým mobilom na toalete sa dokonca objavil na EuPhO 2025 a viedol k diskvalifikácii jeho majiteľa}, ktoré boli doteraz nemysliteľné. K tomu sa nedá napísať nič iné ako \textbf{prosím, nerobte to.} 
+
+Ako však využiť tieto nástroje pre náš prospech pri príprave na FO? Už od príchodu veľkých jazykových modelov sa spomínali ich nesporné výhody ako personalizovanosť, časová dostupnosť, či vytváranie bezpečného prostredia na učenie. Preto si myslíme, že zakazovať používanie týchto nástrojov pri príprave nemá zmysel. Často sa stávajú situácie, keď sme zaseknutí na nejakej úlohe, nerozumieme nejakému kroku riešenia (ktoré sú vo vzorových riešeniach FO veľmi často popísané až príliš stručne) alebo len všeobecne nevieme pochopiť nejaký nový fyzikálny koncept. Bolo by príliš časovo neefektívne snažiť sa vždy na všetko prísť sám, keď vám často chýba iba malý detail k úplnému pochopeniu, nad ktorým ale niekedy strávite aj dlhé hodiny, aby ste naň prišli. Preto je v týchto situáciách dobré obrátiť sa na pomoc týchto modelov, ktoré vám môžu poskytnúť personalizovanú radu, častokrát malú a zdanlivo nevýznamnú, no vás to bude posúvať míľovými krokmi vpred. Práve v takomto \uv{mentoringu} vidíme najväčší prínos AI pri tréningu na FO.
+
+Pri ich používaní by sme radi odporučili nejaké základné zásady. Je dôležité, aby ste v procese učenia ostali \textbf{vy šéfom a AI asistentom, a nie naopak}. Veľmi nebezpečný je pri práci s takouto technológiou stav, kedy sa vám vypína mozog\footnote{\href{https://arxiv.org/abs/2506.08872}{populárna štúdia naznačujúca nižšiu kognitívnu aktivitu u ľudí, ktorý na rôznych úlohach spolupravovali s generatívnymi AI modelmi}} a nechávame sa chatbotom slepo viesť. Dostávame sa do stavu ilúzie vedomostí, keď si myslíme, že na nejaké hotové riešenie od modelu, typicky podané veľmi zrozumiteľne, by sme boli ľahko prišli aj sami, hoci to nie je pravda\footnote{\href{https://en.wikipedia.org/wiki/Hindsight_bias}{\textit{hindsight bias}}}.
+
+% Footnotes
+
+Častokrát vie tiež chatbot vypľuť príliš veľa algebraických úprav, a to možno iným spôsobom, na aký ste boli zvyknutí. Tu je na mieste vždy sa pýtať otázku, či vieme z prvotných rovníc povedať postup, aké úpravy (napr. dosadiť, sčítať, vynásobiť) s nimi robiť, aby sme dostali požadované riešenie. Vtedy si myslíme, že použitie jazykového modelu na de facto ušetrenie času (podobnú vec by zvládol aj výpočtový softvér typu WolframAlpha, s ktorým sa však komunikuje o poznanie ťažšie ako s chatbotom) nie je až tak na škodu. Naopak pokiaľ nám pri pohľade na prvotné rovnice vôbec nepríde jasné ako ďalej, určite sa nad nimi odporúčame najskôr poriadne zamyslieť.
+
+Uznávame však, že takáto reflexia nie je ľahká, a preto je potrebné byť pri používaní jazykových modelov veľmi obozretní. V blízkej budúcnosti očakávame rozmach využívania týchto nástrojov pri príprave na rozličné súťaže. Dovolíme si tvrdiť, že dôsledky tohto rozmachu nie sú nikomu poriadne známe.
+
+
+\subsection{Kalkulus v FO}
+
+Všetko vo fyzike je založené na integrálnom a diferenciálnom počte, sumárne nazývanom kalkulus (matematická analýza). Ak ste sa s tým ešte nestretli, tak vo svojej podstate ide len o súčet a zlomky, ktoré pracujú s veľmi malými číslami, kvôli čomu sa správajú inak, ako sme zvyknutí pri normálnych číslach. Kalkulus využívajú už aj tie najjednoduchšie rovnice, ako napríklad zrýchlený pohyb. Je pravda, že $s = v_0t+\frac12at^2$ ide odvodiť aj na základe grafov rýchlosti a dráhy, no výrazne \uv{jednoduchší}, intuitívnejší a rýchlejší spôsob využíva integrály. Veľa odvodení na strednej škole sa snaží nejakým spôsobom nahradiť kalkulus rôznymi neintuitívnymi krokmi, ktoré si nezapamätáte a len vás zmätú, namiesto toho, aby ukázali jednoduchšiu a krajšiu cestu vďaka kalkulu. Keď poriadne nechápete odvodenia jednotlivých vzťahov, tak sa pre vás fyzika stáva len súborom nesúvisiacich rovníc a nevytvára krásny obraz (popis) reality.
+
+Rozhodli sme sa preto rozdeliť kalkulus do všetkých úrovní, aby sa s ním riešiteľ zoznámil už čo najskôr, a čím skôr si vybudoval robustné konceptuálne chápanie a intuíciu. Sme presvedčení, že vám to výrazne uľahčí štúdium fyziky a otvorí nové možnosti myslenia. Keď sa do štúdia kalkulu pustíte pomocou kvalitných zdrojov, tak sami zistíte, že v skutočnosti nejde o nič komplikované. Existujú predsudky o tom, že derivácie a integrály sú ťažké, ale na úrovni FO nie je ani zďaleka potrebné vedieť úplne do veľkej hĺbky. \textbf{V každom prípade chceme zdôrazniť, že kalkulus priamo na fyzikálnej olympiáde využijete až v kategórii A alebo B (skôr sa nevyskytne), preto ho nie je nevyhnutné vedieť skôr. Ide len o odporúčanie, aby ste mali čo najľahší prechod do týchto vyšších kategórií.} Kalkulus sa takisto hojne využíva napr. na súťažiach spomenutých v sekcii Komunita \ref{komunita}.
+
+
+\subsection{Čo ak príde neúspech?}
+Všetci z nás zažili v našich olympiádnych \uv{kariérach} situácie, ktoré nevyšli podľa predstáv -- jednoducho prídete na olympiádu a cítite, že vám to akosi nejde, trápite sa dlho nad nejakou úlohou a stále vám to nevychádza. Niekedy sa stane aj to, že nie ste so svojimi odovzdanými riešeniami spokojný, no sklamanie príde aj vo chvíli, keď v niektorých úlohách vo výsledkovej listine nedostanete toľko bodov, ako by si ste si boli želali.
+
+Ako sa s takýmito situáciami vyrovnať? V prvom rade si treba uvedomiť, že olympiáda neurčuje vašu hodnotu ani to, ako dobre viete fyziku. Čo váš bodový zisk a postavenie vo výsledkovej listine odráža, je, ako ste sa za 4 hodiny popasovali s konkrétnymi fyzikálnymi úlohami, ktoré pred vás niekto \uv{hodil}. Častokrát  sa stáva, že napríklad prídete domov a po chvíli si uvedomíte, ako ste mali danú úlohu riešiť; alebo dostanete jeden nápad od kamaráta a hneď vám celá úloha príde triviálna; alebo zistíte, že ak by ste úlohy riešili v čase 15:00-19:00 namiesto 8:00-12:00, dosiahli by ste úplne iný výsledok a umiestnenie. Týmto sa snažíme povedať, že na bodový zisk a umiestnenie v súťaži vplýva veľké množstvo faktorov, ktoré my ako súťažiaci dokážeme ovplyvniť len do istej miery. Aj keď sa vám to môže niekedy tak zdať, nikto vás nikdy nebude súdiť za vaše umiestnenie vo \uv{výsledkovke}. Verte nám, že všetci olympionici majú nejakú výsledkovku, na ktorú sa pozerajú neradi :D. Napríklad pri prijímaní na vysoké školy stačí spravidla dosiahnuť hranicu úspešného riešiteľa (aspoň raz za celú strednú školu) a nikoho nezaujíma vaše umiestnenie.
+
+\textbf{Správny mindset by mal byť nastavený na proces riešenia úloh, tréning a prekonávanie samého seba.} Vaším cieľom by nemalo byť konkrétne umiestnenie vo výsledkovej listine alebo počet bodov (keďže tieto neviete ovplyvniť iba vašou vôľou). Skôr by ste sa mali snažiť investovať do prípravy a súťaže maximum svojho úsilia. Samotný proces prípravy, keď samostatne riešime náročné problémy, ktoré sa niekedy zdali byť extrémne ťažké a neriešiteľné a zrazu sa odkrývajú, a stávajú sa pochopiteľnými, je neskutočne krásna a cenná vec.
+
+Cennejší ako umiestnenie sú aj ľudia, s ktorými sa vďaka súťažiam spoznáte. Tieto kamarátsva napĺňajú váš život a sú aj cennými kontaktmi do budúcnosti. Práve s týmito ľuďmi môžete nadviazať hlbšie vzťahy vďaka vašej spoločnej záľube -- veľmi pekné momenty sú hlboké diskusie o nejakej peknej úlohe alebo probléme. Kvôli takýmto momentom sa naozaj oplatí venovať sa fyzike, aj keď sa vám náhodou samotná súťaž nevydarí.
+
+
+
+
+\clearpage
+\section{Bronz}\markright{Bronz}
+
+\subsection{Tipy pre túto úroveň}
+
+Kategória D fyzikálnej olympiády je zaujímavá v tom, že zahŕňa úlohy len z jednej oblasti, a to mechaniky. Šírka zamerania úloh v tejto oblasti je tak výrazne obmedzená, a preto sa tu často vyskytujú stále podobné typy úloh -- takmer vždy nejaká kinematika, vrhy a hydromechanika. Zlé jazyky dokonca hovoria, že je jednoduchšia ako kategória E, určená pre základoškolákov, v ktorej je obsiahnutých podstatne viac rôznorodých oblastí fyziky. Celkovo však ide o prvú stredoškolskú kategóriu, ktorá sa vás snaží naučiť spôsob riešenia úloh vo fyzikálnej olympiáde a nejakým základom mechaniky. Taktiež sa vás snaží motivovať ku riešeniu fyzikálnej olympiády aj v ďalších rokoch.
+
+V tejto kategórii je preto dôležité len jedno: naučiť sa efektívne prepočítavať príklady. Naše odporúčania sú:
+\begin{itemize}
+    \item Aj keď nevidíte riešenie problému okamžite, skúste sa nad ním chvíľku zamyslieť. Vys\-kúšajte si rôzne myšlienkové postupy, ktoré síce nemusia fungovať, ale vďaka ktorým aspoň budete vedieť, ktorým smerom sa (ne)uberať na súťaži.
+    \item Keď sa už pri riešení úlohy neviete ďalej pohnúť, skúste si pozrieť \textit{časť} vzorového riešenia, a potom skúste počítať úlohu ďalej.
+    \item Postupne si \uv{odkrývajte} vzorové riešenie a zamýšľajte sa nad tým, kde ste sa zasekli. Po vyriešení každej úlohy by ste sa mali fyzikálne posunúť aspoň trošku ďalej, a na to je dobré vedieť svoje slabé stránky a pracovať na nich. Nepozerajte si preto riešenie len kvôli tomu, aby ste zistili, aký mal vyjsť výsledok a aké rovnice si na jeho získanie bolo potrebné napísať. Zamýšľajte sa aj nad fyzikálnou podstatou toho problému. 
+    \item Ak ste si mysleli, že ste mali úlohu alebo jej časť vypočítanú, ale vo vzoráku je iný výsledok, nájdite, kde ste spravili chybu. Dávajte si pozor aj na to, že niekedy nie sú ani vzorové riešenia správne. Avšak v $99 \%$ prípadov ide skutočne o správny výsledok. Ak nechápete vysvetlenie vzorového riešenia, nie ste sami. Vo fyzikálnej olympiáde sú vzoráky v prevažnej väčšine príliš stručné a pre priemerného riešiteľa nepostačujúce na pochopenie riešenia tejto úlohy. Stojí za pokus sa opýtať jazykového modelu na vysvetlenie \ref{vseob-ai}.
+\end{itemize}
+
+
+\subsection{Sylabus}
+
+\subsubsection{Algebra}
+
+Vo fyzike veľmi často pracujeme s vektorovými veličinami, preto je potrebné mať dobrú predstavu o tom, čo sú vektory vlastne zač. Priamo s vektormi sa bude počítať zriedkakedy (napríklad, že by ste potrebovali vypočítať skalárny súčin po jednotlivých zložkách), ale ich konceptuálne chápanie je kľúčové.
+
+\begin{itemize}
+    \item riešenie sústavy lineárnych rovníc, kvadratická rovnica
+    \item trigonometrické funkcie ($\sin$, $\cos$, $\tan$, $\arcsin$, $\arccos$, $\arctan$)
+    \item grafické znázornenie funkčnej závislosti (napr. vedieť nakresliť graf pre rýchlosť v zrýchle\-nom pohybe, odčítanie hodnôt z grafu, ...)
+    \item grafické znázornenie vektorov (pre potreby fyziky, vektor je šípka), algebraický zápis
+    \item operácie s vektormi - sčítanie, odčítanie (graficky aj numericky)
+    \item umiestnenie vektoru do súradnicovej sústavy, rozklad na kolmé zložky
+\end{itemize}
+
+
+\subsubsection{Mechanika}
+
+Ako zdroj odporúčame pozrieť si stránky \href{http://fyzikalniolympiada.cz/studijni-texty}{Českej fyzikálnej olympiády}. Veľmi dobrým materiálom sú \href{http://fyzikalniolympiada.cz/texty/ulohy1.pdf}{\textsl{Úlohy z mechaniky I}}.
+
+\begin{itemize}
+    
+    \item rovnomerne zrýchlený pohyb (aj s grafickým znázornením jednotlivých veličín)
+        \begin{itemize}
+            \item voľný pád
+        \end{itemize}
+
+    \item pohyb po kružnici (vzťah medzi obvodovou a uhlovou rýchlosťou)
+        \begin{itemize}
+            \item poznať periódu obehu, frekvenciu, odstredivé zrýchlenie
+        \end{itemize}
+    
+    \item energia, výkon
+        \begin{itemize}
+            \item potenciálna a kinetická energia
+            \item zákon zachovania mechanickej energie
+            \item skupenské premeny, kalorimetrická rovnica
+            \item priemerný a okamžitý výkon
+        \end{itemize}
+
+    \item sila, práca
+        \begin{itemize}
+            \item trecia sila
+            \item skladanie a rozkladanie síl
+            \item pohyb po naklonenej rovine
+            \item moment sily
+            \item ťažisko
+            \item rovnovážna poloha telesa, podmienka statiky (nulová výslednica síl a momentov síl)
+        \end{itemize}
+    
+    \item ideálne kladky
+
+    \item vrhy
+        \begin{itemize}
+            \item zvislý (dĺžka trvania letu, maximálna výška)
+            \item vodorovný (dĺžka trvania letu, dostrel)
+            \item šikmý (dĺžka trvania letu, dostrel, maximálna výška, rovnica trajektórie)
+        \end{itemize}
+
+    \item zrážky
+        \begin{itemize}
+            \item hybnosť
+            \item zákon zachovania hybnosti
+        \end{itemize}
+    
+\end{itemize}
+
+\subsubsection{Hydromechanika}
+
+\begin{itemize}
+    \item hydrostatický tlak
+    \item Pascalov zákon
+    \item princíp fungovania hydraulických zariadení (tu stačí prepočítať zopár školských príkla\-dov)
+    \item Archimedov zákon
+\end{itemize}
+
+
+
+
+\clearpage
+\section{Striebro}\markright{Striebro}
+
+\subsection{Tipy pre túto úroveň}
+
+V kategórii C fyzikálnej olympiády sa už stretnete s viacerými rôznymi oblasťami fyziky, avšak potrebná hĺbka znalostí, minimálne z termodynamiky a elektromagnetizmu, je stále pomerne malá. Prekvapiť však môžu nejaké ťažšie úlohy z mechaniky, keďže sa v tejto kategórii počíta s budovaním na základoch, ktoré ste si mali vybudovať už v kategórii D.
+
+V prípade záujmu sa tiež okolo tohto bodu odporúča zvážiť aj riešenie kategórie A. Hoci obtiažnosť úloh v tejto kategórii sa spočiatku môže zdať ako veľký skok oproti kategóriám C a D, privykanie si na typ úloh v danej kategórii už takto skoro prináša so sebou viaceré výhody do budúcna. Prípadný neúspech na krajskom kole v kategórii A pritom určite nebude žiadna hanba, ale naopak môže vám to priniesť prvé skúsenosti s o niečo náročnejšími úlohami a tiež poučenia do ďalších ročníkov riešenia tejto kategórie.
+
+Na tejto úrovni je dôležité pochopiť ako efektívne pristupovať k príprave. Ide o učenie sa viac do šírky, ako do hĺbky, nakoľko potrebujete z viacerých oblastí fyziky len tie úplne základné znalosti a nepotrebujete im rozumieť na vysokoškolskej úrovni. Najdôležitejšie je zoznámiť sa so základnými pojmami a zákonmi, zistiť s akými veličinami sa v tejto oblasti pracuje a aké sú klasické typy úloh, ktoré sa zvyknú vyskytnúť na súťažiach. Určite nie je potrebné hneď vedieť riešiť komplikované úlohy. Také niečo príde časom, keď si na danú tému fyziky viac zvyknete.
+
+Ideálne je, ak sú v materiáli, z ktorého sa učíte, rovno uvedené nejaké príklady ku každej kapitole. Je totiž dôležité overiť si, či naučené veci viete potom reálne použiť aj v príkladoch. Ak nie sú priamo príklady v danej učebnici/materiály, tak sa oplatí pozrieť si po doštudovaní väčšieho celku \uv{šamaniny}, a v nich skúsiť spočítať príklady určené pre vašu úroveň (napríklad FO C).
+
+
+
+\subsection{Sylabus}
+
+\subsubsection{Kalkulus}
+
+\begin{itemize}
+    \item konceptuálne chápať, že čo je derivácia a integrál (vedieť, prečo je integrál \uv{antideriváciou})
+    \item vedieť používať základné tabuľkové derivácie, integrály. Nie je zatiaľ očakávané vedieť počítať fyzikálne príklady, takisto ani vedieť spočítať všetky tabuľkové integrály a derivácie.
+    \item derivácie -- poznať deriváciu súčtu, súčinu, podielu a zloženej funkcie
+\end{itemize}
+
+\subsubsection{Mechanika}
+
+Odporúčame \href{http://fyzikalniolympiada.cz/texty/ulohy2.pdf}{\textsl{Úlohy z mechaniky II}}, prípadne môžete pozrieť aj ďalšie zdroje na stránke \href{http://fyzikalniolympiada.cz/studijni-texty}{Českej fyzikálnej olympiády}
+
+\begin{itemize}
+
+    \item ťažisko, prvá impulzová veta
+
+    \item pružiny
+        \begin{itemize}
+            \item Hookov zákon
+            \item energia pružiny
+        \end{itemize}
+
+    \item rotačná mechanika
+        \begin{itemize}
+            \item analógia ku translačnému pohybu (rýchlosť vs. uhlová rýchlosť, zrýchlenie vs. uhlové zrýchlenie)
+            \item moment zotrvačnosti, Steinerova veta, \textit{penpedicular axis theorem}
+            \item kinetická energia otáčavého pohybu
+        \end{itemize}
+
+    \item Dopplerov jav
+
+\end{itemize}
+
+\subsubsection{Hydromechanika}
+\begin{itemize}
+    \item objemový prietok
+    \item Bernoulliho rovnica
+    \item Newtonova odporová sila (terminálna rýchlosť)
+    \item povrchové napätie\footnote{Toto je téma, ktorá sa síce neobjavuje až tak často, ale oplatí sa ju vedieť. Úlohy s povrchovým napätím zvyčajne vyžadujú len pochopenie tohto javu a žiadne komplikované výpočty, preto viete získať body pomerne \uv{zadarmo}. Stačí si pamätať vzťahy na energiu povrchového napätia a silu, a väčšinou sa dopracujete k dostatočne dobrým výsledkom.}
+        \begin{itemize}
+            \item energia povrchového napätia, povrchová sila
+            \item kapilárny tlak
+            \item \textit{Laplace pressure} -- keď máme bublinu s určitým polomerom, aký tlak vytvára povrchové napätie
+        \end{itemize}
+\end{itemize}
+
+\subsubsection{Termodynamika}
+\begin{itemize}
+    \item relatívna atómová/molekulová hmotnosť, látkové množstvo, Avogadrova konštanta
+    \item stredná kinetická energia a kvadratická rýchlosť molekúl plynu podľa počtu stupňov voľnosti (formálne sa to nazýva \textit{ekvipartičný teorém})
+    \item stavová rovnica
+	\item prvý termodynamický zákon ($\Delta U=Q+W$, znamienko práce závisí od dohody)
+	\item izotermický, izobarický, izochorický dej, adiabatický dej
+	\item pV-diagram, znázornenie jednotlivých dejov v ňom
+	\item vedieť na základe pV diagramu vypočítať vykonanú prácu
+	\item účinnosť tepelného stroja
+    \item tepelná rozťažnosť pevných látok
+\end{itemize}
+
+\subsubsection{Nebeská mechanika}\label{striebro-nebebeska}
+Odporúčame si pozrieť youtube videá z \href{https://www.youtube.com/@astrokruzok/courses}{Astro Krúžku} zamerané na nebeskú mechaniku (ak sa to chcete rýchlo naučiť, tak postačia aj krátke spracované videá; ak pomalšie a viac do hĺbky, tak sa oplatí si pozrieť záznamy livestreamov). Ide o študijné materiály k astronomickej olympiáde, kvôli čomu tam budú niektoré veci špecifické pre ňu, ale dá vám to dobrý základ v nebeskej mechanike. Takisto tam nájdete aj k tomu spracované \href{https://www.astronomickaolympiada.sk/materialy/}{poznámky} v záložke Astrokurz.
+\begin{itemize}
+    \item Newtonov gravitačný zákon, Kepplerove zákony
+    \item potenciálna energia v radiálnom gravitačnom poli
+    \item zákon zachovania momentu hybnosti
+    \item \uloha{prvá, druhá a tretia kozmická rýchlosť}
+    \item \textit{rovnica vis-viva}
+\end{itemize}
+
+\subsubsection{Elektromagnetizmus}
+\begin{itemize}
+    \item \href{http://fyzikalniolympiada.cz/texty/elobvody.pdf}{jednosmerný prúd}
+        \begin{itemize}
+            \item Ohmov zákon
+            \item Joulovo teplo
+            \item výkon v obvode
+            \item 1. a 2. Kirchhoffov zákon
+            \item ekvivalentný odpor („aký je ekvivalentný odpor medzi uzlom A a B?“)
+            \item vertikálna, horizontálna os symetrie
+            \item ak sa stretnete s priestorovým útvarom, napr. kockou (obr. \ref{fig:kocka_planar}) alebo ihlanom (obr. \ref{fig:ihlan_planar}), je šikovné si ich prekresliť do roviny
+        \end{itemize}
+    
+    \item rezistivita, vodivosť, výpočet odporu na základe geometrie vodiča
+        \begin{itemize}
+            \item \uloha{odpor kvádra medzi jeho protiľahlými stenami}
+            \item pre pokročilejších -- \uloha{odpor medzi vonkajším a vnútorným okrajom disku o hrúbke \(h\), vonkajším polomerom \(R\) a s dierou v strede o polomere \(r\)}. Pozor, tu je potrebné vedieť integrovať
+        \end{itemize}
+    
+\end{itemize}
+
+
+
+\clearpage
+\section{Zlato}\markright{Zlato}
+
+\subsection{Tipy pre túto úroveň}
+
+Táto úroveň zahŕňa riešenie kategórie B, ako aj prvé pokusy o riešenie kategórie A na krajskej či nižšej celoštátnej úrovni. Dôvodom takéhoto spojenia je hlavne charakter kategórie B, ktorá často obsahuje dokonca ťažšie alebo aspoň \uv{škaredšie} (fyzikálne nie až tak zaujímavé) úlohy než kategória A, no na rozdiel od kategórie A v nej nie je možný postup na celoštátnu, či medzinárodnú úroveň. Je preto silno odporúčané neriešiť len samotnú kategóriu B, ale skúsiť najneskôr v rovnakom roku aj kategóriu A.
+
+Krajské kolo kategórie A je pritom však asi najťažšia bariéra, s ktorou sa pri postupnom riešení fyzikálnej olympiády v nejakom okamihu stretnete. V porovnaní s kategóriami C a D môže prekvapiť hlavne množstvo rôznych nových oblastí, ktoré úlohy tohto kola zahŕňajú, a znalosti s tým spojené. V dobe písania tohto dokumentu nie je ani neobvyklé, že úlohy krajského kola kategórie A sú dokonca o niečo ťažšie než následné celoštátne kolo.
+
+Na rozdiel od celoštátneho kola je však v tomto kole cieľ riešiteľa o niečo odlišný --- zatiaľ čo v celoštátnom kole (rovnako ako napríklad v krajskom kole nižších kategórií) sa snažíte poraziť ostatných súťažiacich a dosiahnuť lepší výsledok než oni, v krajskom kole môžete na ostatných riešiteľov takmer zabudnúť a brať to len ako váš individuálny súboj s úlohami, ktoré sú pred vami. Na celoštátne kolo totiž postupuje nanajvýš 30 úspešných riešiteľov krajského kola, avšak v dobe písania tohto dokumentu zvykne byť na krajskom kole väčšinou len tak 15 -- 20 úspešných riešiteľov, ktorí tak automaticky postupujú na celoštátne kolo. 
+
+Hranica úspešnosti je pritom zdanlivo pomerne nízka --- \uv{len} 15 bodov zo 40. Na jej dosiahnutie tak väčšinou stačí vyriešiť jednu úlohu takmer kompletne a zo zvyšných vyriešiť aspoň niečo. Výsledok začínajúceho riešiteľa kategórie A však veľmi závisí od toho, ako mu sadnú úlohy, ktoré práve dostane, keďže z niektorých oblastí (napr. jadrovky, termodynamiky alebo ľahšieho RLC obvodu) je jednoduchšie splniť tento cieľ jednej takmer kompletne vyriešenej úlohy než z iných oblastí.
+
+Pri tejto úrovni sa taktiež oplatí vedieť niektoré špecifiká o úlohách a fungovaní našej slovenskej fyzikálnej olympiády. Jedným z nich sú úlohy na pokračovanie, ktoré niekedy rozvíjajú témy, ktoré sa vyskytli na domácom kole, a inokedy ich dokonca vlastne len priamo skopírujú s malými zmenami. Najmä kvôli týmto úlohám sa výrazne odporúča si pred krajským kolom kategórie A prejsť ešte raz pomerne detailne všetky úlohy domáceho kola a skúsiť si ich znovu prerátať alebo minimálne si z nich pozrieť vzorové riešenie, a poriadne ho pochopiť. Napríklad v školskom roku 2024/2025 sa v krajskom kole vyskytli až dve úlohy, ktoré boli z fyzikálneho hľadiska skoro identické s dvomi úlohami z domáceho kola, a tak na postup na celoštátne kolo stačilo skutočne len vedieť zreplikovať vzorové riešenia dvoch úloh z domáceho kola, čo sa aj napriek tomu podarilo len pomerne malému počtu ľudí.
+
+Ďalším špecifikom slovenskej fyzikálnej olympiády, ktoré si ľahko všimnete pri prerátavaní úloh z minulých ročníkov (na to sa silno odporúča \href{https://drive.google.com/drive/folders/1UyP5pYwwLiy_TQfih_pnccQtV-jDe8j1?usp=sharing}{Zbierka úloh FO}), sú neustále opakujúci sa autori väčšiny jej úloh. Každý autor má prirodzene nejaký svoj obľúbený štýl úloh, prípadne aj obľúbené oblasti, ktoré sa tak hodí poznať pri príprave na krajské či celoštátne kolo kategórie A. Pri dvoch najaktívnejších autoroch úloh ide hlavne o nasledovné oblasti:
+
+\begin{description}
+    \item[Ivo Čáp] -- RLC obvody, jadrovka, do menšej miery elektromagnetizmus a termodynamika
+    \item[Ľubomír Konrád] -- mechanika
+\end{description}
+
+Keďže je zároveň dosť náročné vymýšľať desiatky rokov vždy originálne úlohy do fyzikálnej olympiády, v praxi sa tak často stáva, že nové úlohy sú len prebraté zo starších ročníkov a mierne upravené. Vznikajú takto rôzne \uv{typické} úlohy, ktoré sa rokmi mierne obmieňajú. Tie najčastejšie z nich nájdete v ďalších podkapitolách tejto úrovne.
+
+Na záver je dobré vedieť tiež o existencii sústredenia FO, ktoré sa každoročne na jeseň organizuje v Terchovej. Sú naň pozývaní niektorí minuloroční riešitelia kategórie A, ako aj niektorí úspešní riešitelia nižších kategórií, no v prípade veľkého záujmu a dostatočnej zostávajúcej kapacity niekedy stačí napísať aj priamo predsedovi SK FO Ivovi Čápovi. Na tomto sústredení si viete každý deň po dobu približne týždňa vypočuť niekoľko hodín zaujímavých prednášok od Iva Čápa (a niekedy aj od iných pozvaných hostí), kde prevažne rieši úlohy alebo rozpráva o fyzike. Účasťou na tomto sústredení si tak trochu privyknete na obtiažnosť úloh v kategórii A, ako aj na typy úloh charakteristické pre Iva Čápa. Tiež sa nezľaknite, ak nebudete rozumieť úplne všetkému a príde vám fyzika na tomto sústredení príliš ťažká - to isté platí pravdepodobne pre väčšinu účastníkov daného sústredenia. Ak teda dostanete pozvánku na toto sústredenie a bude vám vyhovovať termín, tak odporúčame naň ísť, obzvlášť ak ste na úrovni zlato až platina, keďže vtedy vám toto sústredenie dá najviac a motivuje vás k riešeniu kategórie A.
+
+\subsection{Odporúčané zdroje úloh}
+
+\begin{itemize}
+    \item \href{https://drive.google.com/drive/folders/1UyP5pYwwLiy_TQfih_pnccQtV-jDe8j1?usp=sharing}{Zbierka úloh FO (\uv{šamaniny})}
+    \begin{itemize}
+        \item jednoznačne najlepší zdroj úloh na slovenskú FO
+        \item úlohy sú približne rozdelené do oblastí, takže sa dá prepočítavať príklady systematickejšie než len pozeraním zopár minulých ročníkov
+        \item obsahuje zároveň aj úlohy oveľa staršie, než sa dá bežne nájsť na internete
+    \end{itemize}
+\end{itemize}
+
+\subsection{Sylabus}
+
+\subsubsection{Algebra}
+
+\begin{itemize}
+    \item komplexné čísla
+    \begin{itemize}
+        \item zápis komplexných čísel (algebraický, exponenciálny a goniometrický tvar), znázornenie v Gaussovej rovine
+        \item súčet, rozdiel, súčin a podiel komplexných čísel
+        \item komplexne združené číslo
+        \item argument komplexne združeného čísla (funkcia atan2\footnote{Definičný vzťah funkcie atan2 nájdete na jeho \href{https://en.wikipedia.org/wiki/Atan2}{wiki} stránke. Určite sa ho neučte, skôr si pozrite, prečo je definovaný tak ako je definovaný (napr. na youtube je o tom niekoľko dobrých videí), a potom vedieť túto definíciu zreplikovať. Pri riešení RLC obvodov ju budete musieť dosť často využiť.})
+    \end{itemize}
+    
+    \item skalárny súčin, vektorový súčin, grafický význam týchto operácií
+
+    \item súčtové a rozdielové vzorce na sínus a kosínus (oplatí sa to pamätať, nakoľko nie vždy to zvyknú uviesť v zadaní). Špeciálnym prípadom týchto vzťahov je vzťah pre sínus alebo kosínus dvojnásobného uhla.
+\end{itemize}
+
+
+\subsubsection{Kalkulus}
+
+\begin{itemize}
+    \item integrál -- jednoduché substitúcie
+
+    \item jednoduché diferenciálne rovnice 1. rádu separáciou premenných
+    
+    \item špeciálne prípady diferenciálnych rovníc 2. rádu
+
+        \begin{itemize}
+            \item riešenie rovnice $\ddot{x}=kx$ pre prípady $k<0$ (harmonický oscilátor), $k=0$ (priamka), $k>0$ (exponenciála)
+        \end{itemize}
+        
+\end{itemize}
+
+\subsubsection{Mechanika}
+Odporúčaný materiál je \href{http://fyzikalniolympiada.cz/texty/ulohy2.pdf}{\textsl{Úlohy z mechaniky II}}.
+\begin{itemize}
+    \item kmity 
+        \begin{itemize}
+            \item pohybová rovnica harmonického oscilátora
+            \item okamžitá výchylka, rýchlosť zrýchlenie
+            \item kyvadlo, pružiny, ...
+        \end{itemize}
+
+    \item rotačná machanika
+        \begin{itemize}
+            \item druhá impulzová veta
+            \item hmotné kladky
+            \item \uloha{pohyb valca}\footnote{na krajskom kole by sa mohol teoreticky objaviť aj pohyb valca, no túto tému sme zaradili do platiny, keďže by aj tak išlo o najťažší príklad.}
+        \end{itemize}
+
+    \item \uloha{pohyb rakety (Ciolkovského rovnica vrátane odvodenia)}
+
+\end{itemize}
+
+\subsubsection{Elektromagnetizmus}
+Literatúra (linky sú jednotlivé body) ku elektrickému a magnetickému poľu sú veľmi odporúčané zdroje aj spolu s preriešením ideálne všetkých prítomných príkladov.
+\begin{itemize}
+    
+    \item \href{http://fyzikalniolympiada.cz/texty/elobvody.pdf}{jednosmerný prúd}
+        \begin{itemize}
+            \item princíp superpozície
+            \item Faradayove zákony elektrolýzy
+        \end{itemize}
+
+    \item \href{http://fyzikalniolympiada.cz/texty/elstat.pdf}{elektrické pole}
+        \begin{itemize}
+            \item Coulombov zákon, intenzita elektrického poľa
+            \item elektrický potenciál, elektrické napätie
+            \item dĺžková, plošná a objemová hustota náboja
+            \item elektrické pole v dielektriku
+            \item kondenzátor, energia kondenzátora, sústavy s kondenzátormi
+        \end{itemize}
+
+    \item \href{http://fyzikalniolympiada.cz/texty/magnet.pdf}{magnetické pole}
+        \begin{itemize}
+            \item magnetická sila
+            \item Ampérov silový zákon ($d\textbf{F}=Id\textbf{l} \times \textbf{B}$)
+            \item vzájomné silové pôsobenie dvoch vodičov
+            \item Lorentzova sila
+            \item \uloha{pohyb nabitej častice (elektrónu) v magnetickom poli}
+            \begin{itemize}
+                \item možné tvary krivky, ktorú bude opisovať sú kružnica alebo skrutkovica (ak má vektor počiatočnej rýchlosti zložku rovnobežnú s vektorom magnetického poľa)
+            \end{itemize}
+            
+        \end{itemize}
+
+    \item \href{http://fyzikalniolympiada.cz/texty/indukce.pdf}{elektromagnetická indukcia}
+        Z linknutého materiálu odporúčame si pozrieť kapitoly 1.1-1.4, príklad \uloha{experimentálny prúdový vozík}, 2.1-2.3. Učenie sa príliš pokročilého elmagu nemá až taký význam, nakoľko sa s ním stretnete jedine možno tak na IPhO. 
+        \begin{itemize}
+            \item magnetický indukčný tok, zákon elektromagnetickej indukcie (Faradayov zákon)
+            \item \uloha{napätie generované vodivým diskom alebo tyčou, ktorá sa otáča v magnetickom poli}
+            \item vlastná indukcia, indukčnosť cievky
+        \end{itemize}
+
+    \item RLC obvody
+        \begin{itemize}
+            \item impedancia sériovo, paralelných a sériovo-paralelných zapojení
+            \item fázový posun prúdu a napätia
+            \item efektívna hodnota prúdu a napätia
+            \item činný (reálna zložka), jalový (imaginárna zložka) a celkový výkon elektrického obvodu 
+        \end{itemize}
+    
+\end{itemize}
+
+\subsubsection{Jadrovka}
+
+\begin{itemize}
+    \item zápis jadrovej reakcie (vedieť označenie elektrónu, pozitrónu, protónu, neutrína, fotónu a alfa častice)
+	\item rozpadová rovnica
+	\item aktivita vzorky
+	\item ekvivalencia hmoty a energie ($E=mc^2$), hmotnostný úbytok (defekt)
+	\item relativistická kinetická energia ($E_k = (\gamma-1)mc^2$)
+    \item typy rozpadov (prehľadová tabuľka na Obr. \ref{fig:rozpady} v Appendixe)
+\end{itemize}
+
+\subsubsection{Kvantovka}
+\begin{itemize}
+    \item energia, hybnosť fotónu, de Broglieho vlnová dĺžka
+    \item žiarenie čierneho telesa, Wienov posunovací zákon
+    \item fotoelektrický jav
+\end{itemize}
+
+
+\subsubsection{Optika}
+Veľmi dobrý úvod do geometrickej a zľahka vlnovej optiky je v knižke \textsl{Sbírka řešených úloh z fyziky IV} od K. Bartuška. Nepodarilo sa nám ju nájsť online, ale odporúčame sa opýtať v škole, či túto knižku náhodou nemajú.
+
+\begin{itemize}
+    \item geometrická optika
+        \begin{itemize}
+            \item Snellov zákon, 
+            \item zobrazovanie odrazom svetla (rovinné a guľové zrkadlá)
+            \item zobrazovanie lomom (refrakciou) svetla - tenké šošovky, paraxiálna aproximácia
+            \item \textit{lens maker's equation} - oplatí sa pamätať si odvodenie alebo priamo rovnicu. Väčši\-nou sa stretnete s tenkou šošovkou, ale je dobré sa aspoň pozrieť na to, ako vyzerá vzťah pre hrubú šošovku.
+        \end{itemize}
+        
+    \item vlnová optika
+        \begin{itemize}
+            \item difrakcia
+        \end{itemize}
+        
+\end{itemize}
+
+
+\clearpage
+\section{Platina}\markright{Platina}
+
+\subsection{Tipy pre túto úroveň}
+
+Keďže sa táto úroveň týka rovnakej kategórie slovenskej FO ako úroveň zlato, tak väčšina všeobecných odporúčaní pre danú úroveň bude do veľkej miery platiť aj pre túto úroveň. Asi najväčším rozdielom oproti predošlej úrovni je tak zvýšenie obtiažnosti úloh, ktoré si budete prepočítavať, prípadne rozšírenie obzorov prostredníctvom prerátavania aj iných národných olympiád než len tej slovenskej.
+
+Celoštátne kolo však so sebou už prináša aj potenciál priamo postúpiť na jednu z medzinárod\-ných olympiád (EuPhO), ak sa umiestnite v prvej pätici súťažiacich. Určite ale netreba zúfať, ak sa to nepodarí, keďže umiestnenie v prvej desiatke so sebou zase prináša možnosť postúpiť na IPhO cez výberové sústredenie. Aj keď sa postup na IPhO po nevydarenom celoštátnom kole môže zdať nepravdepodobný, v skutočnosti je výberové sústredenie už oveľa viac o konzistentnom riešení rôznorodých úloh po dlhšiu dobu, zatiaľ čo na celoštátnom kole vám často napríklad nemusia práve sadnúť úlohy alebo môžete ľahko pokaziť experiment.
+
+Na celoštátnom kole a obzvlášť aj na výberovom sústredení sa zároveň môžete stretnúť s mnohými ďalšími \uv{typickými} úlohami, než s akými ste sa mohli stretnúť na krajskom kole (tieto úlohy opäť nájdete rozpísané ďalej v sylabe). Často sa tak môže stať, že dostanete úlohu, ktorú viete, že ste sa niekedy pokúšali riešiť, či dokonca, že ste čítali aj jej vzorové riešenie, avšak s odstupom času si nie ste istí, ako ho zreplikovať, či dokonca ako vôbec začať. Preto je hlavne v tejto úrovni dôležité neprepočítavať úlohy zo Zbierky úloh FO len na kvantitu, ale obzvlášť pri tých náročnejších úlohách, na ktoré by ste sami neprišli, si zapamätať minimálne nejaké kľúčové myšlienky postupu a snažiť sa čo najviac zredukovať tú časť vzorového riešenia, ktorej nerozumiete, alebo ktorá vám príde neintuitívna. V ideálnom prípade si tiež môžete vyhradiť niekoľko dní prípravy len na prepočítavanie rôznych typických úloh, ktoré sú si nejakým spôsobom podobné (napr. pohyb valca po naklonenej rovine, pohyb valca po páse, atď.), aby vám ich riešenie prišlo už oveľa intuitívnejšie a aby ste v prípade, že dostanete v budúcnosti nejakú podobnú úlohu, \uv{automaticky} vedeli, čo s ňou asi robiť. Zároveň je dôležité nenadobudnúť falošný pocit istoty, že keď ste nejakú úlohu už niekedy dávno počítali a prišla vám ľahká, tak že ju budete vedieť vyriešiť aj teraz. Preto je dobré sa po istom čase k takýmto úlohám vrátiť (napr. tesne pred nejakým vyšším kolom FO) a pripomenúť si ich.
+
+Úlohy na výberovom sústredení môžu do veľkej miery závisieť od toho, kto dané výberové sústredenie vedie a kto tieto úlohy vyberal. V prípade Iva Čápa môžete očakávať hlavne staré úlohy z FO, ktoré niekedy obsahujú aj príklady podobné niektorým starším IPhO úlohám. Naopak v prípade Ľubomíra Muchu môžete skôr očakávať úlohy zo starších medzinárodných alebo iných národných olympiád, ale aj rôzne ďalšie pekné úlohy neštandardné pre slovenskú FO. Preto v tejto úrovni treba tiež do istej miery upustiť od prerátavania len slovenskej FO, ale skúsiť si prejsť aj rôzne iné úlohy, aby ste sa potom nezľakli úloh, ktoré sú výrazne odlišné od štýlu úloh na slovenskej FO. Takéto neštandardné úlohy sa často môžu vyskytnú aj ďalej na medzinárodných olympiádach.
+
+\subsection{Odporúčané zdroje úloh}
+
+\begin{itemize}
+    \item \href{https://drive.google.com/drive/folders/1UyP5pYwwLiy_TQfih_pnccQtV-jDe8j1?usp=sharing}{Zbierka úloh FO (\uv{šamaniny})}
+
+    \begin{itemize}
+        \item nezabudnúť pozerať si aj úlohy z druhého priečinka, teda staršie ročníky
+        \item hlavne na výberku sa niekedy vyskytnú aj úlohy z domácich kôl, ktoré pri prerátavaní úloh väčšinou preskakujete
+    \end{itemize}
+    
+    \item \href{http://fyzikalniolympiada.cz/archiv/zadani-a-reseni}{Krajské a celoštátne kolá českej FO}
+    \begin{itemize}
+        \item niekedy preberajú úlohy aj zo slovenskej FO
+    \end{itemize}
+    
+    \item Celoštátne kolá iných štátov
+        \begin{itemize}
+            \item \href{https://aapt.org/physicsteam/PT-exams.cfm}{USAPhO} -- F=ma je dobré na tréning rýchleho počítania s čo najmenej chybami, 
+            \item \href{https://physics.olympiad.ch/de/downloads?tx_filelist_filelist%5Baction%5D=list&tx_filelist_filelist%5Bcontroller%5D=File&tx_filelist_filelist%5Bpath%5D=%2Fuser_upload%2FArchiv%2FPublic%2FBrain_Food%2FPhysics%2FExams%2F&cHash=5b384260429143c35b2106ab7762e308}{Swiss Physics Olympiad} 
+            \begin{itemize}
+                \item 2nd Round je dobré na overenie fyzikálnej intuície,
+                \item Final Round má long problems, ktoré pripomínajú IPhO úlohy (sú ale výrazne ľahšie), short problems sú pekné krátke úlohy
+            \end{itemize}
+        \end{itemize}
+    
+\end{itemize}
+
+\subsection{Sylabus}
+
+\subsubsection{Kalkulus}
+
+\begin{itemize}
+    \item riešenie sústavy diferenciálnych rovníc pre pohyb v (elektro)magnetickom poli
+    \item riešenie diferenciálnych rovníc 1. rádu variáciou konštánt
+\end{itemize}
+
+\subsubsection{Experimenty}\label{platina-experimenty}
+Ide o jednu z najviac zanedbávaných tém. Síce ste sa na hodinách fyziky mohli stretnúť s experimentálnymi úlohami a ich spracovaním, no skutočné meranie a analýza dát sa podstatne líšia od toho, čo vás naučili v škole. Často si sami musíte navrhnúť aparatúru alebo jej časti, keďže nedostanete presný popis toho, čo máte robiť. Takisto v súťažných podmienkach nemáte nikoho, kto by vám niečo vysvetlil, ak to nechápete alebo by vám s tým pomohol. Fykos experimenty sú úžsané na privyknutie si na robenie experimenty (pozri \ref{komunita}), keďže sa naučíte všetky tieto zručnosti v príjemných domácich podmienkach. 
+
+Pri učení sa ako spracovať experimenty silno odporúčame \href{http://fyzikalniolympiada.cz/texty/mereni.pdf}{Zpracování dat fyzikálních měření} zo stránky českej fyzikálnej olympiády, hlavne kapitoly 3, 4, 5 (teóriu náhodných chýb nie je potrebné vedieť).
+
+Pri spracovaní experimentov na počítači môžete používať rôzne výpočtové nástroje (napr. GNUPlot, prípadne Excel), ktoré dokážu robiť regresiu (ľudovo \uv{fit}) dát rôznymi funkciami, nielen lineárnymi. Keď ste ale na súťaži, robíte všetko len pomocou pera, papiera a milimetrového papiera, kde sa veľmi ťažko presne fituje napríklad \(ax^n\) alebo \(ae^x\). Aby ste sa tomu vyhli, takéto vzťahy sa zvyknú linearizovať. Ak ste sa s linearizáciou ešte nestretli, tak dobrý úvod do nej nájdete publikácii v \href{https://www.astronomickaolympiada.sk/materialy/}{\textsl{Dátová analýza -- praktická príručka}} v kapitole \textsl{Rysovanie kriviek}.
+
+Odporúčame sa takisto zoznámiť s logaritmickými grafmi. Pekná úloha, v ktorej sa s nimi môžete zoznámiť, je 2. teoretická úloha z \href{https://www.astronomickaolympiada.sk/wp-content/uploads/2024/10/AO-2024-RK-SS-zadania-teoria.pdf}{regionálneho kola astronomickej olympiády}. Odporúčame vám si túto úlohu vytlačiť a vyriešiť ju na papieri. Riešenie potom nájdete \href{https://www.astronomickaolympiada.sk/wp-content/uploads/2024/04/AO_2024_RK-SS.pdf}{tu}.
+
+Netreba však zabúdať na to, že na súťaži v skutočnosti nebudete mať ani zďaleka také podmienky ako doma. Hlavne budete pod časovým tlakom a nebudete si môcť \uv{dohľadať informácie na internete}. Je preto dôležité sledovať si čas, nestrácať ho zbytočne a jednoducho postupovať podľa zadania bez zasekávania sa na jednotlivých častiach. Na CK by experimentálka ešte  mala byť vždy taká, aby sa dala stihnúť kompletne vyriešiť v danom časovom limite. Naopak na medzinárodných olympiádach toto už nemusí nutne platiť, preto je tam potrebné vedieť si dobre zorganizovať čas a rozumne si vyberať podúlohy, ktoré stíhate riešiť a prinesú vám čo najvyšší počet bodov. % ?? (pozri Experimenty v diamante \ref{diamant-exp}).
+
+\subsubsection{Optika}
+\begin{itemize}
+    \item \uloha{ohyb svetla v adiabatickej atmosfére} -- dôkaz toho, že sa šíri po kružnici
+\end{itemize}
+
+\subsubsection{Termodynamika}
+\begin{itemize}
+    \item \uloha{adiabatická atmosféra (závislosť teploty a tlaku od výšky)}
+    \item parciálne tlaky
+\end{itemize}
+
+\subsubsection{Mechanika}
+\begin{itemize}
+    \item vzťažné sústavy -- odporúčame už začat študovať Kaldovu kinematiku z \ref{diamant-zdroje} 
+    \item \uloha{pohyb valca po páse alebo po naklonenej rovine (rozlíšenie prípadov, kedy valec prešmy\-kuje, a kedy sa pohybuje valivým pohybom)}
+    \item \uloha{ochranná parabola} -- napr. v Kaldovej kinematike.
+    \item \uloha{capstan equation}
+    \item \uloha{reťazovka} -- tvar lana visiaceho medzi dvomi stĺpmi.
+\end{itemize}
+
+\subsubsection{Elektromagnetizmus}
+
+\begin{itemize}
+    \item \href{http://fyzikalniolympiada.cz/texty/elobvody.pdf}{jednosmerný prúd}
+        \begin{itemize}
+            \item transfigurácia na hviezdu a trojuholník 
+        \end{itemize}
+
+    \item Elektrické pole
+        \begin{itemize} 
+            \item Gaussov zákon a jeho \uloha{použitie pre vybrané tvary (guľa, nekonečná rovina, valec)}
+            \item vlastná elektrostatická energia
+        \end{itemize}
+
+    \item Magnetické pole
+        \begin{itemize}
+            \item Biot-Savartov zákon
+            \item zákon celkového prúdu (Ampérov zákon)
+            \item \uloha{pohyb nabitej častice v elektromagnetickom poli (buď pre $\vec{E} \perp \vec{B}$, alebo pre $\vec{E} \parallel \vec{B}$)}
+        \end{itemize}
+
+    \item RLC
+        \begin{itemize}
+            \item prechodové javy (kapitola 3 v \href{http://fyzikalniolympiada.cz/texty/indukce.pdf}{Elektromagnetická inducke})
+        \end{itemize}
+    
+
+\end{itemize}
+
+
+
+\subsubsection{Špeciálna teória relativity (ŠTR)} \label{subsec:str1}
+Špeciálna teória relativity je téma, ktorú si ľudia štandardne myslia, že vedia alebo dokonca, že je jednoduchá. Veď predsa len "tu niečo gammou prenásobím, tu niečo gammou predelím a mám výsledok". Prekvapivo, na príklady, s ktorými sa stretnete na tejto úrovni, sa stačí naučiť vzorce k javom spomenutým nižšie\footnote{Dôvod, prečo to stačí len na túto úroveň nájdete v ŠTR v diamante \ref{diamant-str}}.
+
+\begin{itemize}
+    \item dilatácia času, kontrakcia dĺžok, relativistická rýchlosť a hybnosť
+    \item relativistická energia ($E^2=p^2c^2+m^2c^4$)
+    \item relativistický Dopplerov jav
+\end{itemize}
+
+\clearpage
+\section{Diamant}\markright{Diamant}
+
+\subsection{Tipy pre túto úroveň}
+
+Ak ste sa dostali až sem a teda ste sa pravdepodobne dostali na niektorú z medzinárodných olympiád, tak v prvom rade gratulujeme! Hoci sú medzinárodné olympiády často veľkým skokom v obtiažnosti, tak vám zároveň umožňujú vycestovať na rôzne netradičné miesta po celom svete, spoznať ľudí z rôznych kultúr a odniesť si nezabudnuteľné zážitky. Preto aj keď vám nejaká medzinárodná olympiáda nevyjde podľa vašich predstáv, nedopusťte, aby vám to skazilo celý zážitok z daného podujatia, či dokonca krajiny.
+
+Popri zážitkoch v inej krajiny je však samozrejme pekné vyhrať aj nejakú tú medailu alebo aspoň čestné uznanie, preto aj na tejto úrovni tu máme pre vás niekoľko cenných tipov. Tie sa však dosť líšia podľa toho, na ktorú medzinárodnú olympiádu ste práve postúpili, a na ktorú sa teda chcete pripravovať, keďže EuPhO a IPhO sú síce možno zdanlivo podobné (teoretická aj experimentálna časť trvá rovnako dlho a počet úloh býva tiež rovnaký), ale štruktúra a dĺžka samotných úloh, rovnako ako znalosti alebo zručnosti, ktoré sa od vás vyžadujú, môžu byť často značne odlišné.
+
+Aj napriek výrazným odlišnostiam v priebehu, niektoré stratégie sa dajú použiť pri oboch súťažiach. Úplne základnou je organizácia priestoru. Štandardne ste zavretí v nejakom boxe, v ktorom máte limitované množstvo miesta. Ku každej úlohe ale dostanete papiere na čistopis, zadanie a prípadne odpoveďové hárky. Veľmi ľahko sa stane, že sa vám tieto papiere pomiešajú, a potom v pohode celkovo aj polhodinu z celej súťaže strávite prehrabávaním sa v papieroch v snahe nájsť jednu konkrétnu stranu. Riešením tohto problému je, že si na zemi vytvoríte kôpky papiera podľa jednotlivých úloh. Jedna kôpka bude obsahovať postupne usporiadané podkôpky so zadaním, odpoveďovými hárkami a čistopismi (v nejakom poradí, ktoré vám vyhovuje). Usporiadanie podkôpok je takisto dôležité, aby ste vedeli rýchlo a efektívne vybrať ľubovoľný hľadaný papier.
+
+Ak vám nejaká úloha nevychádza, tak neškrtajte rovnice! Pri moderáciách sa potom môžete buď vy, alebo vaši tím lídri o ne oprieť pri argumentovaní. Treba si ale dať veľmi veľký pozor na to, že rovnice, ktoré sú rozmerovo nesprávne, vždy ignorujú. Aj keď ste s rovnicou, v ktorej ste zabudli len jeden člen, robili úplne správne netriviálne úpravy, tak vám to nebudú akceptovať, nakoľko práca s rovnicami, ktoré nesedia rozmerovo, je nefyzikálna.
+
+Posledné odporúčanie nesúvisí priamo so súťažením. Na medzinárodných olympiádach vám zoberú všetku elektroniku, ktorá \textbf{dokáže prijímať akýmkoľvek spôsobom informácie}, napr. mobily, elektronické čítačky, bluetooth slúchadlá alebo hodinky, ktoré sa dokážu pripojiť k mobilu (fotoaparát, ktorý dokáže posielať fotky cez bluetooth je v povolený). Odporúčame preto, aby ste s tým počítali, a doniesli si jednoduchý budík alebo analógové hodinky na priebežné sledovanie času počas súťaže, prípadne tiež fotoaparát, ak si chcete počas pobytu v inej krajine tiež fotiť miesta, ktoré navštívite.
+
+\subsubsection{EuPhO}
+Začnime tou olympiádou, na ktorú sa oveľa horšie pripravuje, a to EuPhO. Úlohy na tejto olympiáde bývajú totiž dosť neštandardné a ich zadania sú veľmi krátke, teda riešiteľ nedostane veľa nápovied k tomu, ako pri riešení postupovať. Jedným z dôvodov tejto obtiažnosti alebo neštandardnosti je to, že autorský tím sa dosť koncentruje okolo Jaana Kaldu, prezidenta EuPhO, teda úlohy majú taký svoj špecifický štýl. Toto platí aj pre experimentálne úlohy, kde je často potrebné navrhnúť veľkú časť postupu merania samostatne, preto musíte mať skutočne veľa skúseností s navrhovaním experimentov, zostavovaním aparatúr a meraním rôznych veličín. Riešenie úloh na EuPhO môže niekedy zahŕňať aj rôzne triky, s ktorými ste sa vôbec nemuseli stretnúť. Celkovo teda pre úspešné riešenie úloh na EuPhO musíte vážne do hĺbky rozumieť fyzike a mať s ňou obrovské skúsenosti. Čo sa ale týka oblastí fyziky, z ktorých EuPhO úlohy pochádzajú, prakticky vždy je jedna z úloh z mechaniky a často jedna z úloh aj z elektromagnetizmu, preto sa môže oplatiť zamerať sa pred EuPhO na neštandardné príklady z týchto oblastí.
+
+Výhodou EuPhO je na druhej strane to, že aspoň v teoretických úlohách sa obtiažnosť postupne stupňuje\footnote{podľa \href{https://eupho.ee/rules/}{pravidiel EuPhO} \uv{\textsl{During the theoretical round (5 hours), there are three problems, one of which is very difficult, one is moderately difficult, and one is relatively less demanding}}} a tieto úlohy tak zvyknú byť aj zoradené od najľahšej po najťažšiu. Preto by sme vo väčšine prípadov odporučili nestrácať veľa času zbytočne úlohou T3, ktorá by podľa zoradenia mala byť najťažšia, ale vyriešiť z nej len nejakú prvú podúlohu alebo napísať nejaké myšlienky a zaoberať sa ďalej skôr prvými dvoma teoretickými úlohami, kde je oveľa väčšia šanca nejak s nimi pohnúť. Experimentálna časť pozostáva z jednej alebo dvoch rôznych úloh, ktoré už nie sú nutne zoradené podľa obtiažnosti. Prvá úloha väčšinou je o niečo štandardnejšia, zatiaľ čo druhá je o niečo kreatívnejšia alebo si vyžaduje vymyslenie vlastného postupu merania (viď. napr. \href{https://eupho.ee/wp-content/uploads/2025/06/EuPhO_2025_experiment.pdf}{EuPhO 2025 E2} alebo \href{https://eupho.ee/wp-content/uploads/2023/06/EuPhO_2023_expreiment.pdf}{EuPhO 2023 E2}).
+
+Posledným špecifikom EuPhO je tiež to, že si sami moderujete vlastné riešenia pred opravovateľmi. Ak sa moderácií obávate, môžeme vám povedať, že to je prinajmenšom skutočne zaujímavá skúsenosť. Pred moderáciami je vždy dobré prejsť si vzorové riešenia a tiež vlastné riešenia (k obom by ste v čase moderácií už mali mať prístup), spočítať si váš odhadovaný počet bodov za jednotlivé časti a prípadne si poznačiť body, o ktorých by sa podľa vás dalo ešte diskutovať. K opravovateľom sa potom hodí neprísť s tým, že si idete vyhádať všetky body, ktoré vám nedali, a na ktoré si myslíte, že máte nárok, ale skôr sa s nimi pokojne porozprávať o danej úlohe a o vašom postupe riešenia. Častokrát k vám môžu byť o niečo zhovievavejší, keď uvidia, že váš postup bol skutočne dobre zamýšľaný, a že pred nimi nechcete len presadzovať vlastnú pravdu. Takisto sa oplatí komunikovať s ostatnými členmi delegácie, nakoľko vám môžu povedať nejaké trefné odporúčania, na ktoré by ste pri vlastnej moderácii s daným opravovateľom nemuseli prísť.
+
+\subsubsection{IPhO}
+
+Zamerajme sa teraz na IPhO, kde je forma úloh výrazne odlišná od tej na EuPhO. Asi najzjavnejším rozdielom je dĺžka samotných zadaní. Na EuPhO sa zadania všetkých teoretických úloh vojdú spravidla na jednu stranu a zadania experimentálnych úloh vojdú maximálne na zopár strán. Na IPhO to je presne naopak -- zadanie jednej úlohy má priemerne okolo 5 strán. Úlohy tak sú rozdrobené na oveľa menšie časti a na oveľa viac podúloh než na EuPhO. Zároveň je dôležité vedieť sa rýchlo zorientovať v dlhom texte a vyčítať z neho všetko podstatné pre riešenie daných podúloh.
+
+Toto prirodzene prináša problém s rozvrhnutím času na riešenie jednotlivých podúloh. Je preto potrebné pozorne si sledovať čas a tiež počet bodov za jednotlivé podúlohy. Ak by sme chceli teoretickú časť vyriešiť na 100 \%, mali by sme priemerne získať $0.1$ bodov za minútu. Z toho sa napríklad vieme snažiť vyhradiť každej podúlohe približne toľko času, koľko by nám mala priemerne podľa tohto výpočtu trvať podľa autora úlohy. Tento odhad je avšak len orientačný a v realite samozrejme pravdepodobne nevyriešime dané úlohy na 100 \%. To, že o koľko pomalšie počítate oproti výkonu na plný počet bodov, je potrebné zistiť pri príprave na IPhO. Je vhodné si skúsiť simulovať aj súťažné podmienky, teda vyhradiť si na jednu úlohu približne 2 hodiny, po ktorých si danú úlohu opravíte bez ohľadu na to, koľko ste toho ešte nestihli. Naučíte sa tak lepšie pracovať s časom a v prípade, že sa už dlho neviete v riešení úlohy pohnúť, takisto naučili nachádzať \uv{ľahké} body niekde ďalej v zadaní a takpovediac \uv{škrabať} body aj v častiach, ktorými si už nie ste istí.
+
+Vzhľadom na veľký počet podúloh sa na IPhO obtiažnosť jednotlivých podúloh väčšinou približne stupňuje. V každej úlohe by ste prinajmenšom mali byť schopný vyriešiť aspoň úvodné podúlohy, ktoré sú naozaj jednoduché. Je potrebné si však uvedomiť, že riešením len takýchto jednoduchých podúloh za malý počet bodov, veľa bodov celkovo nezískate, preto sa netreba báť dlhších podúloh za vyšší počet bodov. Je potrebné ale takisto odhadnúť, či danú podúlohu po nejakom rozumnom čase a nejakých matematických úpravách, a vyjadreniach zo vzťahov viete vyriešiť. Alebo aspoň v nej viete spraviť niektoré zaujímavé pozorovania hodné niekoľkých čiastkových bodov. Hoci sú tieto podúlohy ťažšie, ak viete ako na ne, tak vám často nezaberú rádovo viac času než tie jednoduché úlohy. Ak by ste si zaviedli akúsi \uv{časovú hustotu bodov} pre jednotlivé podúlohy, tak ťažšie úlohy majú často vyššiu časovú hustotu bodov. Inými slovami, za rovnaký čas investovaný do riešenia získate viac bodov za predpokladu, že danú podúlohu do veľkej časti vyriešite.
+
+Naopak z počtu bodov za jednotlivé podúlohy zároveň vieme často vyvodiť, aké dlhé alebo náročné by asi malo byť jej riešenie. Ak je teda napríklad nejaká podúloha len za zopár desatín bodu, pravdepodobne netreba premýšľať nad komplikovaným kombinovaním viacerých rôznych vzťahov a nad ťažkými úpravami, ale skôr nad jednoduchou úvahou, úpravou vzťahu alebo dosadením do vzťahu.
+
+Výhodou tejto formy úloh na IPhO je to, že až na podúlohy za veľký počet bodov zvyčajne v jednej podúlohe netreba spraviť až toľko práce naraz. Podúlohy na seba zároveň zvyknú nejakým spôsobom nadväzovať, takže táto forma sa dá pochopiť aj tak, že sa snažíte riešiť nejakú z tých neskorších a ťažších podúloh, a jednotlivé kroky tohto výpočtu sú rozdelené na skoršie podúlohy. To vám ponúka akýsi návod alebo \uv{kuchárku}, aké kroky máte po ceste spraviť. Takisto vám stačí si rozmyslieť, ako zo skorších krokov a z nejakých ďalších výpočtov odvodiť nejaký neskorší krok. Riešenie týchto úloh si tak väčšinou nevyžaduje až tak originálne myšlienky alebo vymýšlanie vlastného postupu ako na EuPhO, ale naopak často zahŕňa skôr veľa matematických úprav a hľadanie prepojení medzi jednotlivými podúlohami, keďže tá netriviálna časť fyzikálnej podstaty každej jednotlivej podúlohy je väčšinou daná v sprievodnom texte, teda ako súčasť danej \uv{kuchárky}.
+
+\subsection{Odporúčané zdroje úloh} \label{diamant-zdroje}
+
+\begin{itemize}
+    \item \href{https://ipho.olimpicos.net/}{IPhO úlohy}
+        \begin{itemize}
+            \item čím viac do minulosti idete, tým sa to viac odlišuje od súčasných úloh
+            \item jedno z najjednoduchších je IPhO 2007 v Iráne, je to dobrý začiatok
+            \item oplatí sa pozerať zhruba od 1995 (je to na individuálne zváženie)
+        \end{itemize}
+
+    \item
+    \href{https://eupho.ee/archive/}{EuPhO úlohy}
+
+    \begin{itemize}
+        \item v posledných rokoch sa do istej miery zľahčujú a stávajú trochu menej trikové
+    \end{itemize}
+
+    \item \textbf{Iné medzinárodné olympiády} (približne v poradí od najvyššej relevantnosti po najnižšiu)
+    Novšie ročníky niektorých olympiád nie sú uploadnuté na stránkach, ale sú dohľadateľné na internete (nie vždy úplne ľahko, ale dá sa k tomu preklikať).
+    \begin{itemize}
+        \item \href{https://nbpho.ee/archive/}{Nordic-Baltic Physics Olympiad (NBPhO)}
+
+        \begin{itemize}
+            \item často úlohy na štýl Kaldu, ale o niečo menej trikové a o niečo klasickejšie než EuPhO úlohy, preto sa dajú dobre využiť pri príprave na EuPhO, keď vám bežné EuPhO úlohy prídu príliš ťažké
+        \end{itemize}
+        
+        \item \href{https://izho.kz/contest/problems/}{International Zhautykov Olympiad (IZhO)}
+
+        \begin{itemize}
+            \item často zaujímavé úlohy sovietskeho typu
+        \end{itemize}
+
+        \item \href{https://rmph.olimpicos.net/}{Romanian Master of Physics (RMPh)}
+
+        \begin{itemize}
+            \item väčšinou matematicky náročnejšie úlohy, ale stále sa v nich občas dajú nájsť rôzne pekné myšlienky
+        \end{itemize}
+        
+        \item \href{https://apho.olimpicos.net/}{Asian Physics Olympiad (APhO)}
+        \begin{itemize}
+            \item väčšinou dosť náročné úlohy (hlavne z výpočtového hľadiska), ktoré si vyžadujú veľa matematického aparátu, ktorý na IPhO a EuPhO väčšinou nie je až do takej miery potrebný, preto sa oplatí pozerať len vybrané ľahšie úlohy
+        \end{itemize}
+        
+    \end{itemize}
+
+    \item \href{https://www.ioc.ee/~kalda/ipho/}{Kalda’s handouts}
+        \begin{itemize}
+            \item obzvlášť odporúčaná je \href{https://www.ioc.ee/~kalda/ipho/kin_ENG.pdf}{kinematika}
+            \item \href{https://www.ioc.ee/~kalda/ipho/meh_ENG2.pdf}{mechanika} je náročnejšia na pochopenie, ale za to výrazne zlepší vaše schopnosti riešiť úlohy z mechaniky
+            \item 
+            k mnohým z nich existujú \href{https://physoly.tech/kalda/}{komunitou napísané vzorové riešenia}
+        \end{itemize}
+
+    \item \href{https://knzhou.github.io/}{Kevin Zhou's handouts}
+    \begin{itemize}
+        \item klasický zdroj na učenie pre mnohých zahraničných ľudí pripravujúcich sa na IPhO
+        \item zahŕňajú aj niektoré úlohy od Kaldu alebo z rôznych iných zdrojov
+        \item sú dosť rozsiahle, preto sa oplatí pozerať len vybrané oblasti, v ktorých sa chcete zlepšiť
+    \end{itemize}
+
+    \item \href{https://fizikolimpiyatlari.com/wp-content/uploads/2023/10/200_Puzzling_Problems_in_Physics.pdf}{200 puzzling physics problems}
+            \begin{itemize}
+                \item obvzlášť si pozrieť úlohy z kinematiky a mechaniky
+            \end{itemize}
+
+    \item \href{https://archive.org/details/200-more-puzzling-physics-problems-with-hints-and-solutions-gnv-64/page/n5/mode/2up}{200 more puzzling physics problems}
+\end{itemize}
+
+Viete sa prípadne pripojiť aj do verejného Discord serveru Physics Olympiads, kde niektorí členovia komunity raz za čas do channelu \#resources pošlú nejaký materiál, ktorý by sa vám mohol hodiť.
+
+\subsection{Sylabus}
+
+\subsubsection{Matematika}
+\begin{itemize}
+    \item konceptuálne chápanie gradientu
+    \item per partes
+    \item dvojitý skalárny súčin (pravidlo \uv{BAC-CAB} -- $\vec{A} \times \left(\vec{B} \times \vec{C}\right) = \vec{B} \left(\vec{A}\cdot \vec{C}\right)-\vec{C} \left(\vec{A}\cdot \vec{B}\right)$)
+\end{itemize}
+
+
+\subsubsection{Špeciálna teória relativity (ŠTR)}\label{diamant-str}
+Ako sme naznačili v \ref{subsec:str1}, relativita je komplikovanejšia, ako sa na prvý pohľad zdá. Toto ale platí len pre tie úplne najjednoduchšie príklady, v ktorých, áno, skutočne, stačí len dosadiť do vzorca. Aj ja som bol jeden z ľudí "$\gamma$ tu, $\gamma$ tam", až kým som na \href{https://eupho.ee/eupho-2024/}{EuPhO 2024} nezistil, že to takto v skutočnosti úplne nefunguje.  Na počítanie komplikovanejších príkladov už ale musíte mať vybudovanú silnú intuíciu. Na vybudovanie intuície silno odporúčame \textit{\href{https://cdn.prexams.com/5701/An Illustrated Guide Relativity.pdf}{An Illustrated Guide to Relativity}}
+(obzvlášť Part I)
+
+\begin{itemize}
+    \item Lorentzove transformácie
+    \item relativistické skladanie rýchlostí
+    \item môže sa hodiť transformačná matica medzi rôznymi vzťažnými sústavami
+\end{itemize}
+
+\subsubsection{Optika}
+\begin{itemize}
+    \item vlnová optika
+        \begin{itemize}
+            \item vyjadrenie pohybu vlny v priestore a čase
+            \item fázové posuny
+            \item stojatá vlna
+        \end{itemize}
+\end{itemize}
+
+\subsubsection{Mechanika}
+\begin{itemize}
+    \item \uloha{natiahnutie hmotnej voľne visiacej pružiny} - \href{https://ipho.olimpicos.net/pdf/IPhO_2019_Q1.pdf}{IPhO 2019 T1, podúlohy A}
+    \item Lagrangeovská mechanika
+\end{itemize}
+
+\subsubsection{Elektromagnetizmus}
+\begin{itemize}
+    \item \uloha{elektrické pole nabitej obruče (na jej osi, ale aj v rovine obruče v blízkosti jej stredu)} -- \href{https://ipho.olimpicos.net/pdf/IPhO_2021_Q2.pdf}{IPhO 2021 T2}, \href{https://ipho.olimpicos.net/pdf/IPhO_2024_Q2.pdf}{IPhO 2024 T2}
+    \item \uloha{magnetické pole obruče, ktorou preteká prúd na jej osi}
+\end{itemize}
+
+\subsubsection{Astrofyzika}\label{diamant-ao}
+
+Posledné roky je na IPhO trend, že jedna z teoretických úloh je zameraná na astrofyziku. Je pravda, že síce do veľkej miery vychádza z elementárnych znalostí, ktoré sme uviedli v \ref{striebro-nebebeska}, avšak na jej úspešné a rýchle riešenie sa veľmi oplatí mať hlbšie pochopenie a skúsenosti z astrofyziky. Často je v úlohách potrebné odvodiť vzťahy, ktoré sú v astrofyzike bežne známe, ale fyzici sa s nimi vôbec nestretnú, alebo si pospájať súvislosti, ktoré nie sú na prvý pohľad úplne triviálne. 
+
+Existuje však iná medzinárodná olympiáda, v ktorej je ešte väčšie množstvo takýchto úloh, a to Medzinárodná olympiáda v astronómii a astrofyzike (IOAA). Jedným možným spôsobom, ako sa v týchto úlohách zlepšiť, by tak mohlo byť začať si pozerať archívy starých ročníkov tejto olympiády, avšak je veľká šanca, že by vám na ich riešenie stále chýbali nejaké znalosti alebo že by ste nemali dostatočnú motiváciu \uv{prekúsať sa} danými úlohami. Preto vám v tomto bode odporúčame skôr začať riešiť \href{https://www.astronomickaolympiada.sk/}{astronomickú olympiádu} (AO), z ktorej sa dá postúpiť na IOAA, a ktorej riešením viete prirodzene a po dlhšiu dobu postupne nadobúdať potrebné znalosti. Pomocou nich by ste eventuálne mali vedeli vyriešiť astrofyzikálne úlohy na IOAA, a tak aj pohnúť s úlohami z tejto oblasti na IPhO. Keď už máte dobré základy z fyziky, tak prechod na AO nie je vôbec ťažký. Potrebujete sa síce naučiť veľa vzťahov a zákutí špecifických pre astrofyziku a astronómiu, ale vďaka tomu sa vám v tejto problematike výrazne zväčší rozhľad.
+
+Astronomická olympiáda sa skladá z troch hlavných častí.
+
+
+\begin{enumerate}
+    \item teória -- najväčšiu skúsenosť budete mať s nebeskou mechanikou, ktorá ale nie je ani zďaleka jediná oblasť astrofyziky, s ktorou sa stretnete. K ďalším oblastiam patrí naprí\-klad fotometria, spektroskopia, kozmológia, optika (tá je jednoduchšia ako vo fyzike), čas a sférika, pričom s niektorými z týchto oblastí sa vo fyzike skoro vôbec nestretnete, ako napríklad so sférikou. Pri príprave odporúčame prejsť si nasledujúce materiály:
+
+    \begin{enumerate}
+        \item \href{https://www.youtube.com/@astrokruzok/courses}{Astro Krúžok} -- Rado Lascsák urobil sériu livestreamov, ktoré sú veľmi dobrý úvod do astrofyzikálnej časti AO. Ak ale do toho nechcete investovať toľko času, tak odporúčame pozrieť už skrátené videá, v ktorých ale nejde až tak do hĺbky. Dlhšie livestreamy sú kľúčové hlavne pri pochopení náročnejších tém, ako je napríklad sférika.
+        
+        \item \href{https://www.astronomickaolympiada.sk/ulohy/archiv-uloh/}{Predchádzajúce ročníky AO} -- spravidla jednoduchšie príklady ako z IOAA, môžu slúžiť ako dobré opakovanie naučených konceptov z astrokrúžku. Odporúčame od roku 2023. 
+        
+        \item \href{https://www.astronomickaolympiada.sk/ulohy/riesene-priklady-ioaa/}{Predchádzajúce ročníky IOAA} -- je pri nich rovnaký trend ako pri IPhO úlohách (t.j. čím viac do minulosti idete, tým viac sa odlišuje od súčasných úloh). Nachádzajú sa v nich pekné koncepty, s ktorými sa budete stretávať veľmi často pri riešení astrofyziky.
+        
+        \item IPhO úlohy z astrofyziky -- dokážu dodať pekný náhľad do princípu fungovania niektorých astronomických javov. Napr. IPhO z roku 2017 malo až dve pekné astroúlohy, T1 zameranú na čiernu hmotu a T3 zameranú na kozmológiu (od zhruba polovice ďalej, to už je ale dosť škaredé), T1 z roku 2025.
+
+        \item \href{https://www.aoguide.app/}{AO Guide} -- pekne spísané študijné texty k mnohým oblastiam AO, zároveň v každej časti obsahuje aj nejaké relevantné úlohy, ktoré sú často z predošlých ročníkov IOAA
+    \end{enumerate}
+
+    \item dátová analýza -- ide o časť, ktorá je fyzikom veľmi blízka. Ako napovedá názov, ide o prácu s dátami -- vytváranie grafov, fitovanie, prepočítavanie údajov v tabuľkách a pod. Ide o veľmi dobrú prípravu na spracovanie experimentov na rôznych súťažiach, či už na CK FO, EuPhO alebo IPhO. Ide o zručnosť, ktorú sa jednoducho zíde dostať do rúk. Čím viac a viac sa s ňou zžijete, tým rýchlejšie a lepšie vám to pôjde aj na fyzikálnych súťažiach.
+
+    Ak viete všetko z Experimenty \ref{platina-experimenty}, tak by ste mali dátovú analýzu bez problémov zvládnuť. V AO sa kladie ešte väčší dôraz na linearizáciu ako v FO a využívanie tabuľky v kalkulačke.
+
+    \item prax -- toto je časť, kvôli ktorej veľmi veľa fyzikov odmieta robiť AO. Praktická časť si totiž vyžaduje istú znalosť nebeskej oblohy, teda najmä polohy jednotlivých súhvezdí a najjasnejších hviezd. Hoci si to vyžaduje isté memorovanie a tréning, tak veríme, že ak tomu venujete nejaké množstvo času a skutočne sa na to zameriate, tak sa to dá zvládnuť nanajvýš do niekoľkých týždňov.
+
+    Na učenie sa súhvezdí a hviezd odporúčame aplikáciu \href{https://stellarium.org/cs/}{Stellarium}, kde viete sledovať simulovanú oblohu a tiež si vytvoriť rôzne mapy nebeskej oblohy, na ktorých si môžete vyznačovať súhvezdia pri ich učení alebo opakovaní. Prostredníctvom tejto aplikácie sa viete neskôr učiť aj polohy Messierových objektov, z ktorých však väčšinou stačí poznať len niekoľko desiatok najznámejších.
+
+    Okrem znalosti nebeskej oblohy si mnohé praktické úlohy vyžadujú aj porozumenie pohybu nebeských objektov po oblohe či popis tohto pohybu (napr. prostredníctvom rôznych súradnicových systémov). V poslednej dobe vznikli viaceré kvalitné materiály, z ktorých sa aj tento aspekt praktických úloh dá naučiť:
+
+    \begin{itemize}
+        \item \href{https://github.com/Rajit13/Star-Maps-101-and-Practices/tree/master}{Star Maps 101 and Practices}
+        \begin{itemize}
+            \item zameriava sa napríklad na rôzne druhy máp a pohyb hviezd po oblohe
+            \item obsahuje aj rôzne praktické úlohy z predošlých ročníkov národných a medzi\-národ\-ných olympiád
+        \end{itemize}
+        \item \href{https://drive.google.com/drive/u/0/folders/158MAxU6U2O_d_oUsVKrWfBywN4i5arN1}{Observational Astronomy: A Practical Handout for Olympiad} -- zaoberá sa hlavne čítaním hviezdnych máp a nebeskými súradnicami
+    \end{itemize}
+    
+    Môžete prípadne sledovať kanál \#resources vo verejnom Discord serveri Astro Olympiads.
+    
+\end{enumerate}
+
+
+
+\clearpage
+
+\section{Appendix}\markright{Appendix}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\linewidth]{typy_rozpadov.png}
+    \caption{Prehľadová tabuľka rozpadov. Emisia pozitrónu sa tiež nazýva $\beta^+$ rozpad (pretože sa odštiepuje pozitrón ${}^0_{+1}e$) a v tabuľke označený beta rozpad sa tiež zvykne označovať ako $\beta^-$ rozpad (odštiepuje sa elektrón  ${}^0_{-1}e$). \href{https://chem.libretexts.org/Courses/Oregon_Tech_PortlandMetro_Campus/OT_-_PDX_-_Metro\%3A_General_Chemistry_I/03\%3A_Nuclei_Ions_and_the_Periodic_Table/3.01\%3A_Nuclear_Chemistry_and_Radioactive_Decay}{Zdroj} }
+    \label{fig:rozpady}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.47\linewidth]{kocka_planar.png}
+    \caption{Prekreslenie kocky do roviny}
+    \label{fig:kocka_planar}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.47\linewidth]{ihlan_planar.png}
+    \caption{Prekreslenie ihlanu do roviny}
+    \label{fig:ihlan_planar}
+\end{figure}
+
+
+
+\end{document}
