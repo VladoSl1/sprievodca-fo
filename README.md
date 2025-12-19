@@ -1,6 +1,6 @@
 # Sprievodca Fyzikálnou olympiádou
 
-Najnovšiu verziu nájdete [tu](sprievodca_fo.tex). Na stiahnutie stlačte tlačidlo vyznačené na obrázku nižšie.
+Najnovšiu verziu nájdete [tu](sprievodca_fo.pdf). Na stiahnutie stlačte tlačidlo vyznačené na obrázku nižšie.
 
 <span class="image main"><img src="tutorial_stiahnutie.png" /></span>
 
