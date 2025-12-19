@@ -15,9 +15,9 @@ Dokument obsahuje veľmi veľa odkazov, ktoré sú zvýraznené v obdĺžnikoch.
 Veľmi uvítame ľubovoľnú iniciatívu zlepšiť alebo aktualizovať tohto Sprievodcu Fyzikálnou olympiádou. Je napísaný v LaTeXu v prostredí [Overleaf](https://www.overleaf.com/) a sprístupnený cez GitHub, teda sa ponúka niekoľko možností ako pomôcť:
 
 - v Overleafe (po kontaktovaní autorov získate prístup)
-- forknúť toto repo, urobiť zmeny v samostatnom branchi a urobiť pull request s popisom zmien (viac na tomto [tutorialy](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project)
+- forknúť toto repo, urobiť zmeny v samostatnom branchi a urobiť pull request s popisom zmien (viac na tomto [tutorialy](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project))
 - napísať zmeny do emailu, anotovanom PDF alebo ľubovoľným iným spôsobom
 
-Uvítame pomoc v ľubovoľnom rozsahu, či už ide o odporučenie nejakéhho dobrého učebného materiálu, opravenie gramatických/logických chýb, napísanie svojho názoru na toto dielo...
+Uvítame pomoc v ľubovoľnom rozsahu, či už ide o odporučenie dobrého učebného materiálu, opravenie gramatických/logických chýb, napísanie svojho názoru na toto dielo...
 
 #### V prípade záujmu nám určite napíšte na niektorú z adries uvedených v dokumente
