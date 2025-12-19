@@ -20,4 +20,4 @@ Veľmi uvítame ľubovoľnú iniciatívu zlepšiť alebo aktualizovať tohto Spr
 
 Uvítame pomoc v ľubovoľnom rozsahu, či už ide o odporučenie nejakéhho dobrého učebného materiálu, opravenie gramatických/logických chýb, napísanie svojho názoru na toto dielo...
 
-#### V prípade záujmu nám určite napíšte na vladimir.slanina.jr@gmail.com
+#### V prípade záujmu nám určite napíšte na niektorú z adries uvedených v dokumente
